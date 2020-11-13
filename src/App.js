@@ -8,6 +8,7 @@ const App = () => {
   return (
     <div>
       <div className="loading"></div>
+      <div className="bg-layer"></div>
       <div className="navigation">
         <ul>
           <li>
@@ -43,7 +44,26 @@ const App = () => {
         </ul>
       </div>
 
-      <div className="banner"></div>
+      <div className="banner">
+        <div className="banner__text sahara">
+          <span className="banner__line"></span>
+          <p className="banner__sub-title">Sahara Desert - Morocco</p>
+          <h1 className="banner__title">
+            <span>Marrakech</span> <span>Merzouga</span>
+          </h1>
+
+          <p className="banner__description">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+            sunt praesentium deleniti qui autem quaerat aut incidunt aspernatur
+            mollitia at consequuntur.
+          </p>
+
+          <div className="banner__discover">
+            <span className="material-icons">bookmark</span>
+            <button>Discover location</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

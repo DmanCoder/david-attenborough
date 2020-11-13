@@ -1,13 +1,70 @@
 .banner {
   height: 100vh;
   padding: 1.3rem;
-  background: url('https://images.pexels.com/photos/701016/pexels-photo-701016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
-    no-repeat center / cover;
+  background: url('../../assets/imgs/desert-1840453.jpg') no-repeat center /
+    cover;
   color: #fff;
   font-size: 1.3rem;
   text-align: center;
+  position: relative;
+  z-index: 10;
 
   @include immaFlex($align: center, $dir: column, $just: center);
   @include mediaQ('>=desktop') {
+    text-align: left;
+  }
+
+  &__banner-text {
+    position: relative;
+  }
+
+  &__line {
+    display: none;
+
+    @include mediaQ('>=desktop') {
+      display: inline-block;
+      height: 0.3vh;
+      width: 1vw;
+      background-color: $white;
+    }
+  }
+
+  &__sub-title {
+    line-height: 3rem;
+    font-size: 3rem;
+  }
+
+  &__title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 7.5rem;
+    text-transform: uppercase;
+    line-height: 8rem;
+  }
+
+  &__description {
+    font-size: 1.3rem;
+  }
+
+  &__discover {
+    margin-top: 3rem;
+    cursor: not-allowed;
+    @include immaFlex($align: center, $just: center);
+
+    span {
+      background-color: $color__primary;
+      padding: 1rem;
+      border-radius: 50%;
+      margin-right: 1.3rem;
+    }
+
+    button {
+      border: 0.1rem solid $white;
+      border-radius: 100rem;
+      color: $white;
+      width: 20rem;
+      height: 4rem;
+      background-color: transparent;
+    }
   }
 }
