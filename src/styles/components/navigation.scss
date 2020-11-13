@@ -1,0 +1,76 @@
+.navigation {
+  position: fixed;
+  width: 100%;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  padding-top: 1.3rem;
+
+  &__active {
+    padding-bottom: 0.25rem;
+    border-bottom: 0.2rem solid $color__primary;
+  }
+
+  @include mediaQ('>=tablet') {
+    padding-left: 5rem;
+    padding-right: 2rem;
+  }
+  ul {
+    @include immaFlex($align: center, $just: space-between);
+
+    li {
+      color: $white;
+      cursor: not-allowed;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    li:nth-child(1) {
+      img {
+        width: 14rem;
+      }
+    }
+
+    li:nth-child(2),
+    li:nth-child(3),
+    li:nth-child(4),
+    li:nth-child(5),
+    li:nth-child(6),
+    li:nth-child(7),
+    li:nth-child(8),
+    li:nth-child(9) {
+      display: none;
+
+      @include mediaQ('>=tablet') {
+        display: block;
+        padding: 2rem 3rem;
+      }
+    }
+
+    li:nth-child(2) {
+      margin-left: auto;
+    }
+
+    li:nth-child(10) {
+      span {
+        font-size: 3rem;
+      }
+
+      @include mediaQ('>=tablet') {
+        display: none;
+      }
+    }
+  }
+}
+
+.loading {
+  display: none;
+  @include mediaQ('>=tablet') {
+    display: block;
+    position: absolute;
+    top: 0;
+    background-color: $color__primary;
+    height: 0.5vh;
+    opacity: 0.6;
+  }
+}

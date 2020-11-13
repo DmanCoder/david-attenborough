@@ -1,0 +1,13 @@
+.banner {
+  height: 100vh;
+  padding: 1.3rem;
+  background: url('https://images.pexels.com/photos/701016/pexels-photo-701016.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+    no-repeat center / cover;
+  color: #fff;
+  font-size: 1.3rem;
+  text-align: center;
+
+  @include immaFlex($align: center, $dir: column, $just: center);
+  @include mediaQ('>=desktop') {
+  }
+}
