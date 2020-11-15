@@ -10,6 +10,11 @@ html {
   font-size: 62.5%; // DEFINES WHAT 1 REM IS E.G. 1REM === 10PX
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   box-sizing: border-box;
   line-height: 1.5;
@@ -17,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: 0.05rem;
+  max-width: 100%;
   overflow: hidden;
   @extend %font-open;
 }

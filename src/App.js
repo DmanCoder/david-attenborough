@@ -63,6 +63,42 @@ const App = () => {
             <button>Discover location</button>
           </div>
         </div>
+
+        <div className="banner__slides">
+          <div className="banner__gallery">
+            <div
+              className="banner__gallery-item dolphins"
+              data-background="./assets/imgs/dolphins.jpg"
+            ></div>
+            <div
+              className="banner__gallery-item africa"
+              data-background="./assets/imgs/africa.jpg"
+            ></div>
+            <div
+              className="banner__gallery-item polar"
+              data-background="./assets/imgs/polar.jpg"
+            ></div>
+            <div
+              className="banner__gallery-item eagle"
+              data-background="./assets/imgs/eagle.jpg"
+            ></div>
+            <div
+              className="banner__gallery-item madagascar"
+              data-background="./assets/imgs/madagascar.jpg"
+            ></div>
+            <div
+              className="banner__gallery-item desert"
+              data-background="./assets/imgs/desert.jpg"
+            ></div>
+          </div>
+          <div className="banner__gallery-btn">
+            <button></button>
+
+            <div className="progress-bar"></div>
+
+            <div className="progress-number"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
