@@ -72,7 +72,7 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">Creatures of the deep</p>
                 <h4 className="title">
                   <span>Blue</span> <span>Planet</span>
                 </h4>
@@ -84,9 +84,9 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">Africa</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>The</span> <span>Motherland</span>
                 </h4>
               </div>
             </div>
@@ -96,9 +96,9 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">Animals of the Arctic</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>Frozen</span> <span>Planet</span>
                 </h4>
               </div>
             </div>
@@ -108,9 +108,9 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">Fishing for a living</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>The</span> <span>Life of birds</span>
                 </h4>
               </div>
             </div>
@@ -132,9 +132,9 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">Sahara Desert - Morocco</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>Marrakech</span> <span>Merzouga</span>
                 </h4>
               </div>
             </div>
