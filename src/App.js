@@ -69,34 +69,95 @@ const App = () => {
             <div
               className="banner__gallery-item dolphins"
               data-background="./assets/imgs/dolphins.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
             <div
               className="banner__gallery-item africa"
               data-background="./assets/imgs/africa.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
             <div
               className="banner__gallery-item polar"
               data-background="./assets/imgs/polar.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
             <div
               className="banner__gallery-item eagle"
               data-background="./assets/imgs/eagle.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
             <div
               className="banner__gallery-item madagascar"
               data-background="./assets/imgs/madagascar.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
             <div
               className="banner__gallery-item desert"
               data-background="./assets/imgs/desert.jpg"
-            ></div>
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Dolphins</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
           </div>
+
           <div className="banner__gallery-btn">
-            <button></button>
+            <button>
+              <span className="material-icons">keyboard_arrow_left</span>
+              <span className="material-icons">keyboard_arrow_right</span>
+            </button>
 
-            <div className="progress-bar"></div>
+            <div className="progress-bar">
+              <div></div>
+            </div>
 
-            <div className="progress-number"></div>
+            <div className="progress-number">
+              <span>01</span>
+              {/* <span>02</span>
+              <span>03</span>
+              <span>04</span>
+              <span>05</span>
+              <span>06</span> */}
+            </div>
           </div>
         </div>
       </div>
