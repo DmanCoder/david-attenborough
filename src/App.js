@@ -47,9 +47,9 @@ const App = () => {
       <div className="banner">
         <div className="banner__text sahara">
           <span className="banner__line"></span>
-          <p className="banner__sub-title">Sahara Desert - Morocco</p>
+          <p className="banner__sub-title">Sahara Desert</p>
           <h1 className="banner__title">
-            <span>Marrakech</span> <span>Merzouga</span>
+            <span>The Great </span> <span>Ubari Sand Sea</span>
           </h1>
 
           <p className="banner__description">
@@ -78,6 +78,7 @@ const App = () => {
                 </h4>
               </div>
             </div>
+
             <div
               className="banner__gallery-item africa"
               data-background="./assets/imgs/africa.jpg"
@@ -125,17 +126,18 @@ const App = () => {
                   <span>Blue</span> <span>Planet</span>
                 </h4>
               </div>
-            </div>
-            <div
-              className="banner__gallery-item desert"
-              data-background="./assets/imgs/desert.jpg"
-            >
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Sahara Desert - Morocco</p>
-                <h4 className="title">
-                  <span>Marrakech</span> <span>Merzouga</span>
-                </h4>
+
+              <div
+                className="banner__gallery-item desert"
+                data-background="./assets/imgs/desert.jpg"
+              >
+                <div className="banner__gallery-detail">
+                  <span className="line"></span>
+                  <p className="sub-title">Sahara Desert</p>
+                  <h4 className="title">
+                    <span>The Great </span> <span>Ubari Sand Sea</span>
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
