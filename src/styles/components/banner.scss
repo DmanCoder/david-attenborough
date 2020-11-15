@@ -1,7 +1,8 @@
 .banner {
   height: 100vh;
   padding: 1.3rem;
-  background: url('../../assets/imgs/desert.jpg') no-repeat center / cover;
+  background: linear-gradient(#000, #000 0.2),
+    url('../../assets/imgs/desert.jpg') no-repeat center / cover;
   color: #fff;
   font-size: 1.3rem;
   text-align: center;
@@ -19,7 +20,10 @@
   &__text {
     position: relative;
     padding-left: 3vw;
-    margin-bottom: 15vh;
+
+    @include mediaQ('>=desktop') {
+      margin-bottom: 15vh;
+    }
   }
 
   &__line {
@@ -45,7 +49,7 @@
   &__title {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    font-size: 7.5rem;
+    font-size: 6rem;
     text-transform: uppercase;
     line-height: 8rem;
 

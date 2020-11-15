@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from './assets/logo/logo-white.png';
+import logo from './assets/logo/square.png';
 
 import './styles/main.scss';
 
@@ -13,6 +13,9 @@ const App = () => {
         <ul>
           <li>
             <img src={logo} alt="Logo" />
+            <h5>
+              <span>David</span> <span>Attenborough</span>
+            </h5>
           </li>
           <li>
             <span className="navigation__active">home</span>

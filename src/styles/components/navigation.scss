@@ -27,8 +27,19 @@
     }
 
     li:nth-child(1) {
+      @include immaFlex($align: center);
       img {
-        width: 14rem;
+        width: 3rem;
+        margin-right: 0.5rem;
+      }
+
+      h5 {
+        margin-bottom: 1rem;
+        span {
+          margin-bottom: -1rem;
+          font-size: 2rem;
+          display: block;
+        }
       }
     }
 
@@ -81,7 +92,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(#000, .25);
+  background-color: rgba(#000, 0.25);
   height: 100vh;
   z-index: 1;
 }
