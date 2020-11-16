@@ -17,6 +17,7 @@
 
   &__text {
     position: relative;
+    width: 40%;
     padding-left: 3vw;
 
     @include mediaQ('>=desktop') {
@@ -152,8 +153,8 @@
   &__gallery-item {
     display: inline-block;
     height: 19.5vw;
-    position: relative;
     width: 13.5vw;
+    position: relative;
     box-shadow: 1.5rem 2rem 1rem rgba(0, 0, 0, 0.25);
     border-radius: 2rem;
     &:not(:first-child) {
@@ -240,5 +241,18 @@
       font-size: 3vw;
       @extend %font-bebas;
     }
+  }
+}
+
+
+.poster {
+  display: none;
+  @include mediaQ('>=desktop') {
+    position: absolute;
+    display: block;
+    height: 19.5vw;
+    width: 13.5vw;
+    background-color: red;
+    z-index: 102;
   }
 }

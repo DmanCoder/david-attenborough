@@ -27,7 +27,6 @@ const setPosterOverlap = () => {
   const glFirstAttr = glFirst.getBoundingClientRect();
 
   gsap.set('.poster', {
-    delay: 2,
     css: {
       top: glFirstAttr.top,
       left: glFirstAttr.left,
@@ -35,11 +34,40 @@ const setPosterOverlap = () => {
   });
 };
 
+function debounce(fn, ms) {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      fn.apply(this, arguments);
+    }, ms);
+  };
+}
+
 const App = () => {
+  const [dimensions, setDimensions] = React.useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
     loadingAnimation();
     setPosterOverlap();
+
+    const debouncedHandleResize = debounce(function handleResize() {
+      setPosterOverlap();
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }, 1000);
+
+    window.addEventListener('resize', debouncedHandleResize);
+    return () => {
+      window.removeEventListener('resize', debouncedHandleResize);
+    };
   });
 
   return (
