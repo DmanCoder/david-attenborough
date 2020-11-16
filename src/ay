@@ -20,7 +20,7 @@ const imgObj = {
   polar: polarIMG,
 };
 
-const loadingAnimation = (posterExpandAnimation) => {
+const loadingAnimation = (posterExpansionAnimation) => {
   const loadingTL = gsap.timeline();
   loadingTL
     .to('.loading', {
@@ -35,12 +35,11 @@ const loadingAnimation = (posterExpandAnimation) => {
     })
     .set('.loading', {
       clearProps: 'all',
-      onComplete: () => posterExpandAnimation(),
+      onComplete: () => posterExpansionAnimation(),
     });
-  // Add `posterExpandAnimation` onComplete
 };
 
-const setPosterOverlap = () => {
+const createAndPositionInitialGalleryItem = () => {
   const glItem = gsap.utils.toArray('.banner__gallery-item');
   const glFirst = glItem[0];
   const glFirstAttr = glFirst.getBoundingClientRect();
@@ -50,6 +49,13 @@ const setPosterOverlap = () => {
   // const backgroundURL = `${backgroundLinear}, url('${imgObj[subject]}') no-repeat center / cover`;
   const backgroundURL = `url('${imgObj[subject]}') no-repeat center / cover`;
 
+  // Hide first index of gallery
+  // gsap.to(glFirst, { background: 'transparent' });
+  alert(glFirst);
+
+  console.log(glFirst, '======================');
+
+  // Position poster
   gsap.set('.poster', {
     css: {
       background: backgroundURL,
@@ -59,7 +65,7 @@ const setPosterOverlap = () => {
   });
 };
 
-const posterExpandAnimation = () => {
+const posterExpansionAnimation = () => {
   const posterTL = gsap.timeline();
   const posterAfter = CSSRulePlugin.getRule('.poster:after'); // get the rule
 
@@ -80,6 +86,22 @@ const posterExpandAnimation = () => {
       duration: 0.5,
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     });
+
+  // onComplete: () => {
+  // Clear poster animations
+  // const clearPosterTL = gsap.timeline();
+  // const glFirst = glItem[0];
+  // const subject = glFirst.dataset.subject;
+  // const bgLinear =
+  //   'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
+  // const bgURL = `url('${imgObj[subject]}') no-repeat center / cover`;
+  // const background = `${bgLinear}, ${bgURL}`;
+  // clearPosterTL
+  //   .set('.poster', { delay: 0.4, clearProps: 'all' })
+  //   .to('body', { background }, 0);
+  // // .to(glFirst, { background });
+  // // TODO: get the first index of image when gallery is updated
+  // },
 };
 
 // Time out debounce
@@ -106,8 +128,11 @@ const App = () => {
 
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
-      loadingAnimation(posterExpandAnimation);
-      setPosterOverlap();
+      // Execute `posterExpansionAnimation` onComplete
+      loadingAnimation(posterExpansionAnimation);
+
+      // Creates gallery poster based on the first item of the gallery
+      createAndPositionInitialGalleryItem();
     } else {
       // Clear all animations on mobile
       gsap.set(['.loading', '.poster'], { clearProps: 'all' });
@@ -115,7 +140,7 @@ const App = () => {
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setPosterOverlap();
+      createAndPositionInitialGalleryItem();
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
