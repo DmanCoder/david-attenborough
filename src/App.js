@@ -21,14 +21,30 @@ const loadingAnimation = () => {
     .set('.loading', { clearProps: 'all' });
 };
 
+const setPosterOverlap = () => {
+  const glItem = gsap.utils.toArray('.banner__gallery-item');
+  const glFirst = glItem[0];
+  const glFirstAttr = glFirst.getBoundingClientRect();
+
+  gsap.set('.poster', {
+    delay: 2,
+    css: {
+      top: glFirstAttr.top,
+      left: glFirstAttr.left,
+    },
+  });
+};
+
 const App = () => {
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
     loadingAnimation();
+    setPosterOverlap();
   });
 
   return (
     <div>
+      <div className="poster"></div>
       <div className="loading"></div>
       <div className="navigation">
         <ul>
