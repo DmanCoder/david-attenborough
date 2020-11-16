@@ -1,11 +1,26 @@
 import React, { useEffect } from 'react';
-import { gsap } from './gsapInit';
+import { gsap, CSSRulePlugin } from './gsapInit';
 
 import logo from './assets/logo/square.png';
+import dolphinsIMG from './assets/imgs/doliphins.jpg';
+import africaIMG from './assets/imgs/africa.jpg';
+import desertIMG from './assets/imgs/desert.jpg';
+import eagleIMG from './assets/imgs/eagle.jpg';
+import madagascarIMG from './assets/imgs/madagascar.jpg';
+import polarIMG from './assets/imgs/polar.jpg';
 
 import './styles/main.scss';
 
-const loadingAnimation = () => {
+const imgObj = {
+  dolphins: dolphinsIMG,
+  africa: africaIMG,
+  desert: desertIMG,
+  eagle: eagleIMG,
+  madagascar: madagascarIMG,
+  polar: polarIMG,
+};
+
+const loadingAnimation = (posterExpandAnimation) => {
   const loadingTL = gsap.timeline();
   loadingTL
     .to('.loading', {
@@ -18,17 +33,22 @@ const loadingAnimation = () => {
       duration: 0.5,
       css: { left: '100%' },
     })
-    .set('.loading', { clearProps: 'all' });
+    .set('.loading', {
+      clearProps: 'all',
+      onComplete: () => posterExpandAnimation(),
+    });
+  // Add `posterExpandAnimation` onComplete
 };
 
 const setPosterOverlap = () => {
   const glItem = gsap.utils.toArray('.banner__gallery-item');
   const glFirst = glItem[0];
   const glFirstAttr = glFirst.getBoundingClientRect();
-  const bgURL = glFirst.dataset.background;
-  // const backgroundLinear =
-  //   'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
-  const backgroundURL = `url('${bgURL}') no-repeat center / cover`;
+  const subject = glFirst.dataset.subject;
+  const backgroundLinear =
+    'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
+  // const backgroundURL = `${backgroundLinear}, url('${imgObj[subject]}') no-repeat center / cover`;
+  const backgroundURL = `url('${imgObj[subject]}') no-repeat center / cover`;
 
   gsap.set('.poster', {
     css: {
@@ -37,6 +57,29 @@ const setPosterOverlap = () => {
       left: glFirstAttr.left,
     },
   });
+};
+
+const posterExpandAnimation = () => {
+  const posterTL = gsap.timeline();
+  const posterAfter = CSSRulePlugin.getRule('.poster:after'); // get the rule
+
+  posterTL
+    .to('.poster', {
+      duration: 1.25,
+      ease: 'power4.inOut',
+      css: {
+        width: '100vw',
+        height: '100vh',
+        top: 0,
+        left: 0,
+        borderRadius: '0',
+      },
+    })
+    .to(posterAfter, {
+      delay: -0.8,
+      duration: 0.5,
+      cssRule: { background: 'rgba(0, 0, 0, .3)' },
+    });
 };
 
 // Time out debounce
@@ -52,6 +95,7 @@ function debounce(fn, ms) {
 }
 
 const App = () => {
+  console.log(imgObj);
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -62,7 +106,7 @@ const App = () => {
 
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
-      loadingAnimation();
+      loadingAnimation(posterExpandAnimation);
       setPosterOverlap();
     } else {
       // Clear all animations on mobile
@@ -150,7 +194,7 @@ const App = () => {
           <div className="banner__gallery">
             <div
               className="banner__gallery-item dolphins"
-              data-background="./assets/imgs/dolphins.jpg"
+              data-subject="dolphins"
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
@@ -161,10 +205,7 @@ const App = () => {
               </div>
             </div>
 
-            <div
-              className="banner__gallery-item africa"
-              data-background="./assets/imgs/africa.jpg"
-            >
+            <div className="banner__gallery-item africa" data-subject="africa">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Africa</p>
@@ -173,10 +214,7 @@ const App = () => {
                 </h4>
               </div>
             </div>
-            <div
-              className="banner__gallery-item polar"
-              data-background="./assets/imgs/polar.jpg"
-            >
+            <div className="banner__gallery-item polar" data-subject="polar">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Animals of the Arctic</p>
@@ -185,10 +223,7 @@ const App = () => {
                 </h4>
               </div>
             </div>
-            <div
-              className="banner__gallery-item eagle"
-              data-background="./assets/imgs/eagle.jpg"
-            >
+            <div className="banner__gallery-item eagle" data-subject="eagle">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Fishing for a living</p>
@@ -199,7 +234,7 @@ const App = () => {
             </div>
             <div
               className="banner__gallery-item madagascar"
-              data-background="./assets/imgs/madagascar.jpg"
+              data-subject="madagascar"
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
@@ -211,7 +246,7 @@ const App = () => {
 
               <div
                 className="banner__gallery-item desert"
-                data-background="./assets/imgs/desert.jpg"
+                data-subject="desert"
               >
                 <div className="banner__gallery-detail">
                   <span className="line"></span>
