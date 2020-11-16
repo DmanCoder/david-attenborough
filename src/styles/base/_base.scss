@@ -10,7 +10,8 @@ html {
   font-size: 62.5%; // DEFINES WHAT 1 REM IS E.G. 1REM === 10PX
 }
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -24,6 +25,9 @@ body {
   letter-spacing: 0.05rem;
   max-width: 100%;
   overflow: hidden;
+  background-color: #333;
+  background: linear-gradient(rgba(#000, 0.15), rgba(#000, 0.15)),
+    url('../../assets/imgs/desert.jpg') no-repeat center / cover;
   @extend %font-open;
 }
 
