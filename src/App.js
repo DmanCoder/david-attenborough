@@ -1,11 +1,32 @@
 import React, { useEffect } from 'react';
+import { gsap } from './gsapInit';
 
 import logo from './assets/logo/square.png';
 
 import './styles/main.scss';
 
+const loadingAnimation = () => {
+  const loadingTL = gsap.timeline();
+  loadingTL
+    .to('.loading', {
+      duration: 1,
+      css: {
+        left: '0',
+      },
+    })
+    .to('.loading', {
+      duration: 0.5,
+      css: { left: '100%' },
+    })
+    .set('.loading', { clearProps: 'all' });
+};
+
 const App = () => {
-  useEffect(() => {});
+  useEffect(() => {
+    gsap.to('body', { css: { visibility: 'visible' } });
+    loadingAnimation();
+  });
+
   return (
     <div>
       <div className="loading"></div>

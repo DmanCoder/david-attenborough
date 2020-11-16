@@ -81,9 +81,12 @@
     display: block;
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     background-color: $color__primary;
     height: 0.5vh;
     width: 100%;
-    // opacity: 0.8;
+    left: -100%;
+    opacity: 0.8;
   }
 }
