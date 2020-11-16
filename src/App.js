@@ -25,15 +25,21 @@ const setPosterOverlap = () => {
   const glItem = gsap.utils.toArray('.banner__gallery-item');
   const glFirst = glItem[0];
   const glFirstAttr = glFirst.getBoundingClientRect();
+  const bgURL = glFirst.dataset.background;
+  // const backgroundLinear =
+  //   'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
+  const backgroundURL = `url('${bgURL}') no-repeat center / cover`;
 
   gsap.set('.poster', {
     css: {
+      background: backgroundURL,
       top: glFirstAttr.top,
       left: glFirstAttr.left,
     },
   });
 };
 
+// Time out debounce
 function debounce(fn, ms) {
   let timer;
   return () => {
@@ -63,6 +69,7 @@ const App = () => {
       gsap.set(['.loading', '.poster'], { clearProps: 'all' });
     }
 
+    // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
       setPosterOverlap();
       setDimensions({
