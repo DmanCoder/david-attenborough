@@ -50,8 +50,7 @@ const createAndPositionInitialGalleryItem = () => {
   const backgroundURL = `url('${imgObj[subject]}') no-repeat center / cover`;
 
   // Hide first index of gallery
-  // gsap.to(glFirst, { background: 'transparent' });
-  alert(glFirst);
+  gsap.to(glFirst, { css: { background: 'transparent', xIndex: '-1' } });
 
   console.log(glFirst, '======================');
 
