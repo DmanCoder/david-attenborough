@@ -17,10 +17,10 @@
 
   &__text {
     position: relative;
-    width: 40%;
     padding-left: 3vw;
 
     @include mediaQ('>=desktop') {
+      width: 40%;
       margin-bottom: 15vh;
     }
   }
@@ -243,7 +243,6 @@
     }
   }
 }
-
 
 .poster {
   display: none;

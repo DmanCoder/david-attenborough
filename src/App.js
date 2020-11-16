@@ -53,8 +53,15 @@ const App = () => {
 
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
-    loadingAnimation();
-    setPosterOverlap();
+
+    // Animation on desktop only
+    if (window.innerWidth >= 1024) {
+      loadingAnimation();
+      setPosterOverlap();
+    } else {
+      // Clear all animations on mobile
+      gsap.set(['.loading', '.poster'], { clearProps: 'all' });
+    }
 
     const debouncedHandleResize = debounce(function handleResize() {
       setPosterOverlap();
