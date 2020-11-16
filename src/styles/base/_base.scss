@@ -26,7 +26,7 @@ body {
   max-width: 100%;
   overflow: hidden;
   background-color: #333;
-  background: linear-gradient(rgba(#000, 0.15), rgba(#000, 0.15)),
+  background: linear-gradient(rgba(#000, 0.3), rgba(#000, 0.3)),
     url('../../assets/imgs/desert.jpg') no-repeat center / cover;
   @extend %font-open;
 }

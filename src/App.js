@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import logo from './assets/logo/square.png';
 
 import './styles/main.scss';
 
 const App = () => {
+  useEffect(() => {});
   return (
     <div>
       <div className="loading"></div>
-      <div className="bg-layer"></div>
       <div className="navigation">
         <ul>
           <li>
