@@ -40,24 +40,27 @@ const loadingAnimation = (posterExpansionAnimation) => {
 };
 
 const createAndPositionInitialGalleryItem = () => {
+  // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
+
+  // Get the first index of the array
   const glFirst = glItem[0];
+
+  // Get x/y coordinates and width/height
   const glFirstAttr = glFirst.getBoundingClientRect();
+
+  //  Get data attribute
   const subject = glFirst.dataset.subject;
-  const backgroundLinear =
-    'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
-  // const backgroundURL = `${backgroundLinear}, url('${imgObj[subject]}') no-repeat center / cover`;
-  const backgroundURL = `url('${imgObj[subject]}') no-repeat center / cover`;
 
-  // Hide first index of gallery
-  gsap.to(glFirst, { css: { background: 'transparent', xIndex: '-1' } });
+  // Create background string
+  const rgba = 'rgba(0, 0, 0, 0.3)';
+  const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
+  const bgURL = `url('${imgObj[subject]}') no-repeat center / cover`;
 
-  console.log(glFirst, '======================');
-
-  // Position poster
+  // Position poster over above `glFirst`
   gsap.set('.poster', {
     css: {
-      background: backgroundURL,
+      background: bgURL,
       top: glFirstAttr.top,
       left: glFirstAttr.left,
     },
@@ -66,7 +69,7 @@ const createAndPositionInitialGalleryItem = () => {
 
 const posterExpansionAnimation = () => {
   const posterTL = gsap.timeline();
-  const posterAfter = CSSRulePlugin.getRule('.poster:after'); // get the rule
+  const posterAfter = CSSRulePlugin.getRule('.poster::after'); // get the rule
 
   posterTL
     .to('.poster', {
@@ -77,6 +80,7 @@ const posterExpansionAnimation = () => {
         height: '100vh',
         top: 0,
         left: 0,
+
         borderRadius: '0',
       },
     })
@@ -85,6 +89,10 @@ const posterExpansionAnimation = () => {
       duration: 0.5,
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     });
+
+  // TODO: Add `.shadow-none` to gallery index 1 image
+  // TODO: Set Index 1 gallery image to body background
+  // TODO: Change z-index to -1 then remove/clear props
 
   // onComplete: () => {
   // Clear poster animations
