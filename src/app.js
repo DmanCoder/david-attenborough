@@ -117,6 +117,9 @@ const posterExpansionAnimation = () => {
   // Get rule
   const posterAfter = CSSRulePlugin.getRule('.poster::after');
 
+  // get and store the CSS rule in a varaible
+  const glFirstText = CSSRulePlugin.getRule(`.${subject}`);
+
   // Create background string
   const rgba = 'rgba(0, 0, 0, 0.3)';
   const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
@@ -125,6 +128,7 @@ const posterExpansionAnimation = () => {
 
   /*
    * 1). Expand Poster
+   * 2). Fade out poster text
    * 2). Darken `posterAfter`
    * 3). Set current poster to body background image
    * 4). Change z-index of poster and remove
@@ -141,36 +145,26 @@ const posterExpansionAnimation = () => {
         borderRadius: '0',
       },
     })
+    .to(
+      `.${subject} .banner__gallery-detail`,
+      {
+        delay: 0.2,
+        duration: 0.25,
+        ease: 'power3.in',
+        css: { bottom: -20, autoAlpha: 0 },
+      },
+      0
+    )
     .to(posterAfter, {
-      delay: -0.8,
-      duration: 0.5,
+      delay: -0.85,
+      duration: 1,
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     })
     .to('body', { css: { background: bg } }, 'bg-switch')
-    // .set('.poster', { clearProps: 'all' });
-    .set('.poster', {
+    .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
       onComplete: () => setUpAndPositionPoster(),
     });
-  // .to(glFirst, { css: { zIndex: -1 } }, 'bg-switch');
-  // TODO: Set Index 1 gallery image to body background
-  // TODO: Change z-index to -1 then remove/clear props
-
-  // onComplete: () => {
-  // Clear poster animations
-  // const clearPosterTL = gsap.timeline();
-  // const glFirst = glItem[0];
-  // const subject = glFirst.dataset.subject;
-  // const bgLinear =
-  //   'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
-  // const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
-  // const background = `${bgLinear}, ${bgURL}`;
-  // clearPosterTL
-  //   .set('.poster', { delay: 0.4, clearProps: 'all' })
-  //   .to('body', { background }, 0);
-  // // .to(glFirst, { background });
-  // // TODO: get the first index of image when gallery is updated
-  // },
 };
 
 // Time out debounce
@@ -299,7 +293,7 @@ const App = () => {
               </div>
             </div>
 
-            <div className="banner__gallery-item africa" data-subject="africa">
+            {/* <div className="banner__gallery-item africa" data-subject="africa">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Africa</p>
@@ -307,8 +301,8 @@ const App = () => {
                   <span>The</span> <span>Motherland</span>
                 </h4>
               </div>
-            </div>
-            <div className="banner__gallery-item polar" data-subject="polar">
+            </div> */}
+            {/* <div className="banner__gallery-item polar" data-subject="polar">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Animals of the Arctic</p>
@@ -316,8 +310,8 @@ const App = () => {
                   <span>Frozen</span> <span>Planet</span>
                 </h4>
               </div>
-            </div>
-            <div className="banner__gallery-item eagle" data-subject="eagle">
+            </div> */}
+            {/* <div className="banner__gallery-item eagle" data-subject="eagle">
               <div className="banner__gallery-detail">
                 <span className="line"></span>
                 <p className="sub-title">Fishing for a living</p>
@@ -325,30 +319,26 @@ const App = () => {
                   <span>The</span> <span>Life of birds</span>
                 </h4>
               </div>
-            </div>
+            </div> */}
             <div
               className="banner__gallery-item madagascar"
               data-subject="madagascar"
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Dolphins</p>
+                <p className="sub-title">The fate of Aepyornis</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>Evolution</span> <span>at its finest</span>
                 </h4>
               </div>
-
-              <div
-                className="banner__gallery-item desert"
-                data-subject="desert"
-              >
-                <div className="banner__gallery-detail">
-                  <span className="line"></span>
-                  <p className="sub-title">Sahara Desert</p>
-                  <h4 className="title">
-                    <span>The Great </span> <span>Ubari Sand Sea</span>
-                  </h4>
-                </div>
+            </div>
+            <div className="banner__gallery-item desert" data-subject="desert">
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Sahara Desert</p>
+                <h4 className="title">
+                  <span>The Great </span> <span>Ubari Sand Sea</span>
+                </h4>
               </div>
             </div>
           </div>
