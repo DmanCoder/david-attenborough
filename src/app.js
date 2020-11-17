@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { gsap, CSSRulePlugin } from './gsapInit';
 
 // Assets
@@ -24,6 +24,12 @@ const imgURL = {
   eagle: eagleIMG,
   madagascar: madagascarIMG,
   polar: polarIMG,
+};
+
+const moveFirstGalleryImageToEndOfGallery = () => {
+  const glItem = gsap.utils.toArray('.banner__gallery-item');
+
+  console.log(glItem, 'glItemglItemglItemglItem');
 };
 
 const loadingAnimation = (posterExpansionAnimation) => {
@@ -68,10 +74,6 @@ const setUpAndPositionPoster = () => {
   const rgba = 'rgba(0, 0, 0, 0.3)';
   const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
-
-  // Convert pixel to vw unit
-  // alert({ height: glFirstRect.height, width: glFirstRect.width }.toString());
-  // alert(convertPXToVW(glFirstRect.width));
 
   // Position poster over above `glFirst`
   gsap.set('.poster', {
@@ -163,7 +165,10 @@ const posterExpansionAnimation = () => {
     .to('body', { css: { background: bg } }, 'bg-switch')
     .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
-      onComplete: () => setUpAndPositionPoster(),
+      onComplete: () => {
+        setUpAndPositionPoster();
+        moveFirstGalleryImageToEndOfGallery();
+      },
     });
 };
 
@@ -179,12 +184,73 @@ function debounce(fn, ms) {
   };
 }
 
+const galleryElementArr = [
+  <div className="banner__gallery-item dolphins" data-subject="dolphins">
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">Creatures of the deep</p>
+      <h4 className="title">
+        <span>Blue</span> <span>Planet</span>
+      </h4>
+    </div>
+  </div>,
+  <div className="banner__gallery-item africa" data-subject="africa">
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">Africa</p>
+      <h4 className="title">
+        <span>The</span> <span>Motherland</span>
+      </h4>
+    </div>
+  </div>,
+  <div className="banner__gallery-item polar" data-subject="polar">
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">Animals of the Arctic</p>
+      <h4 className="title">
+        <span>Frozen</span> <span>Planet</span>
+      </h4>
+    </div>
+  </div>,
+  // <div className="banner__gallery-item eagle" data-subject="eagle">
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">Fishing for a living</p>
+  //     <h4 className="title">
+  //       <span>The</span> <span>Life of birds</span>
+  //     </h4>
+  //   </div>
+  // </div>,
+
+  // <div className="banner__gallery-item madagascar" data-subject="madagascar">
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">The fate of Aepyornis</p>
+  //     <h4 className="title">
+  //       <span>Evolution</span> <span>at its finest</span>
+  //     </h4>
+  //   </div>
+  // </div>,
+
+  // <div className="banner__gallery-item desert" data-subject="desert">
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">Sahara Desert</p>
+  //     <h4 className="title">
+  //       <span>The Great </span> <span>Ubari Sand Sea</span>
+  //     </h4>
+  //   </div>
+  // </div>,
+];
+
 const App = () => {
   console.log(imgURL);
-  const [dimensions, setDimensions] = React.useState({
+  const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
+
+  const [galleryArr, setGalleryArr] = useState(galleryElementArr);
 
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
@@ -192,10 +258,9 @@ const App = () => {
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
       // Creates gallery poster based on the first item of the gallery
-      setUpAndPositionPoster();
-
+      // setUpAndPositionPoster();
       // Execute `posterExpansionAnimation` onComplete
-      loadingAnimation(posterExpansionAnimation);
+      // loadingAnimation(posterExpansionAnimation);
     } else {
       // Clear all animations on mobile
       gsap.set(['body', '.loading', '.poster'], { clearProps: 'all' });
@@ -203,7 +268,7 @@ const App = () => {
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setUpAndPositionPoster();
+      // setUpAndPositionPoster();
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
@@ -215,6 +280,8 @@ const App = () => {
       window.removeEventListener('resize', debouncedHandleResize);
     };
   });
+
+  console.log(galleryElementArr, 'galleryArr');
 
   return (
     <div>
@@ -280,67 +347,7 @@ const App = () => {
 
         <div className="banner__slides">
           <div className="banner__gallery">
-            <div
-              className="banner__gallery-item dolphins"
-              data-subject="dolphins"
-            >
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Creatures of the deep</p>
-                <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
-                </h4>
-              </div>
-            </div>
-
-            {/* <div className="banner__gallery-item africa" data-subject="africa">
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Africa</p>
-                <h4 className="title">
-                  <span>The</span> <span>Motherland</span>
-                </h4>
-              </div>
-            </div> */}
-            {/* <div className="banner__gallery-item polar" data-subject="polar">
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Animals of the Arctic</p>
-                <h4 className="title">
-                  <span>Frozen</span> <span>Planet</span>
-                </h4>
-              </div>
-            </div> */}
-            {/* <div className="banner__gallery-item eagle" data-subject="eagle">
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Fishing for a living</p>
-                <h4 className="title">
-                  <span>The</span> <span>Life of birds</span>
-                </h4>
-              </div>
-            </div> */}
-            <div
-              className="banner__gallery-item madagascar"
-              data-subject="madagascar"
-            >
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">The fate of Aepyornis</p>
-                <h4 className="title">
-                  <span>Evolution</span> <span>at its finest</span>
-                </h4>
-              </div>
-            </div>
-            <div className="banner__gallery-item desert" data-subject="desert">
-              <div className="banner__gallery-detail">
-                <span className="line"></span>
-                <p className="sub-title">Sahara Desert</p>
-                <h4 className="title">
-                  <span>The Great </span> <span>Ubari Sand Sea</span>
-                </h4>
-              </div>
-            </div>
+            {galleryArr.map((poster, index) => poster)}
           </div>
 
           <div className="banner__gallery-btn">
