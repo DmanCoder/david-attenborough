@@ -10,9 +10,6 @@ import eagleIMG from './assets/imgs/eagle.jpg';
 import madagascarIMG from './assets/imgs/madagascar.jpg';
 import polarIMG from './assets/imgs/polar.jpg';
 
-// Utils
-import convertPXToVW from './utils/convertPXToVW';
-
 // Styles
 import './styles/main.scss';
 
@@ -26,20 +23,37 @@ const imgURL = {
   polar: polarIMG,
 };
 
-const moveFirstGalleryImageToEndOfGallery = () => {
-  const glItem = gsap.utils.toArray('.banner__gallery-item');
+// TODO: Create a looping function for `loadingAnimation`
+// TODO: Gallery Slide animation
+// TODO: Baller text reveal and reveal out animation
 
-  console.log(glItem, 'glItemglItemglItemglItem');
+// const interval = setInterval(function () {
+//   console.log('RUNNING ever 8 sec');
+// }, 8000);
+// clearInterval(interval);
+
+const moveFirstGalleryImageToEndOfGallery = (state) => {
+  // Copy of state
+  const el = [...state.elementST]; // E.g: From [8, 1, 2, 3, 4, 5, 6, 7]
+  const firstPoster = el.shift();
+  el.push(firstPoster); // E.g: To [1, 2, 3, 4, 5, 6, 7, 8]
+
+  /*
+   * When state change is triggered it causes a re-render that re-triggers
+   * All the animation functions, causing an endless loop that works well with the animations
+   * - As planed - :D
+   */
+  state.fnc(el);
 };
 
-const loadingAnimation = (posterExpansionAnimation) => {
+const loadingAnimation = (state, posterExpansionAnimation) => {
   // Loading timeline
   const loadingTL = gsap.timeline();
 
   // Loading animation
   loadingTL
     .to('.loading', {
-      duration: 1,
+      duration: 8,
       css: {
         left: '0',
       },
@@ -50,11 +64,11 @@ const loadingAnimation = (posterExpansionAnimation) => {
     })
     .set('.loading', {
       clearProps: 'all',
-      onComplete: () => posterExpansionAnimation(), // Trigger `posterExpansionAnimation` `onComplete`
+      onComplete: () => posterExpansionAnimation(state), // Trigger `posterExpansionAnimation` `onComplete`
     });
 };
 
-const setUpAndPositionPoster = () => {
+const setUpAndPositionPoster = (state) => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -71,8 +85,8 @@ const setUpAndPositionPoster = () => {
   const subject = glFirst.dataset.subject;
 
   // Create background string
-  const rgba = 'rgba(0, 0, 0, 0.3)';
-  const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
+  // const rgba = 'rgba(0, 0, 0, 0.3)';
+  // const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
 
   // Position poster over above `glFirst`
@@ -103,7 +117,7 @@ const setUpAndPositionPoster = () => {
   gsap.set(glFirst, { css: { background: 'transparent' } });
 };
 
-const posterExpansionAnimation = () => {
+const posterExpansionAnimation = (state) => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -118,9 +132,6 @@ const posterExpansionAnimation = () => {
 
   // Get rule
   const posterAfter = CSSRulePlugin.getRule('.poster::after');
-
-  // get and store the CSS rule in a varaible
-  const glFirstText = CSSRulePlugin.getRule(`.${subject}`);
 
   // Create background string
   const rgba = 'rgba(0, 0, 0, 0.3)';
@@ -167,7 +178,7 @@ const posterExpansionAnimation = () => {
       clearProps: 'all',
       onComplete: () => {
         setUpAndPositionPoster();
-        moveFirstGalleryImageToEndOfGallery();
+        moveFirstGalleryImageToEndOfGallery(state);
       },
     });
 };
@@ -185,7 +196,11 @@ function debounce(fn, ms) {
 }
 
 const galleryElementArr = [
-  <div className="banner__gallery-item dolphins" data-subject="dolphins">
+  <div
+    key="dolphins"
+    className="banner__gallery-item dolphins"
+    data-subject="dolphins"
+  >
     <div className="banner__gallery-detail">
       <span className="line"></span>
       <p className="sub-title">Creatures of the deep</p>
@@ -194,7 +209,11 @@ const galleryElementArr = [
       </h4>
     </div>
   </div>,
-  <div className="banner__gallery-item africa" data-subject="africa">
+  <div
+    key="africa"
+    className="banner__gallery-item africa"
+    data-subject="africa"
+  >
     <div className="banner__gallery-detail">
       <span className="line"></span>
       <p className="sub-title">Africa</p>
@@ -203,7 +222,7 @@ const galleryElementArr = [
       </h4>
     </div>
   </div>,
-  <div className="banner__gallery-item polar" data-subject="polar">
+  <div key="polar" className="banner__gallery-item polar" data-subject="polar">
     <div className="banner__gallery-detail">
       <span className="line"></span>
       <p className="sub-title">Animals of the Arctic</p>
@@ -212,39 +231,46 @@ const galleryElementArr = [
       </h4>
     </div>
   </div>,
-  // <div className="banner__gallery-item eagle" data-subject="eagle">
-  //   <div className="banner__gallery-detail">
-  //     <span className="line"></span>
-  //     <p className="sub-title">Fishing for a living</p>
-  //     <h4 className="title">
-  //       <span>The</span> <span>Life of birds</span>
-  //     </h4>
-  //   </div>
-  // </div>,
+  <div key="eagle" className="banner__gallery-item eagle" data-subject="eagle">
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">Fishing for a living</p>
+      <h4 className="title">
+        <span>The</span> <span>Life of birds</span>
+      </h4>
+    </div>
+  </div>,
 
-  // <div className="banner__gallery-item madagascar" data-subject="madagascar">
-  //   <div className="banner__gallery-detail">
-  //     <span className="line"></span>
-  //     <p className="sub-title">The fate of Aepyornis</p>
-  //     <h4 className="title">
-  //       <span>Evolution</span> <span>at its finest</span>
-  //     </h4>
-  //   </div>
-  // </div>,
+  <div
+    key="madagascar"
+    className="banner__gallery-item madagascar"
+    data-subject="madagascar"
+  >
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">The fate of Aepyornis</p>
+      <h4 className="title">
+        <span>Evolution</span> <span>at its finest</span>
+      </h4>
+    </div>
+  </div>,
 
-  // <div className="banner__gallery-item desert" data-subject="desert">
-  //   <div className="banner__gallery-detail">
-  //     <span className="line"></span>
-  //     <p className="sub-title">Sahara Desert</p>
-  //     <h4 className="title">
-  //       <span>The Great </span> <span>Ubari Sand Sea</span>
-  //     </h4>
-  //   </div>
-  // </div>,
+  <div
+    key="desert"
+    className="banner__gallery-item desert"
+    data-subject="desert"
+  >
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">Sahara Desert</p>
+      <h4 className="title">
+        <span>The Great </span> <span>Ubari Sand Sea</span>
+      </h4>
+    </div>
+  </div>,
 ];
 
 const App = () => {
-  console.log(imgURL);
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -258,9 +284,17 @@ const App = () => {
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
       // Creates gallery poster based on the first item of the gallery
-      // setUpAndPositionPoster();
-      // Execute `posterExpansionAnimation` onComplete
-      // loadingAnimation(posterExpansionAnimation);
+      setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
+
+      /*
+       * This function is called every 8 seconds
+       * Execute `posterExpansionAnimation` onComplete
+       */
+
+      loadingAnimation(
+        { elementST: galleryArr, fnc: setGalleryArr },
+        posterExpansionAnimation
+      );
     } else {
       // Clear all animations on mobile
       gsap.set(['body', '.loading', '.poster'], { clearProps: 'all' });
@@ -268,7 +302,7 @@ const App = () => {
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      // setUpAndPositionPoster();
+      setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
@@ -279,9 +313,9 @@ const App = () => {
     return () => {
       window.removeEventListener('resize', debouncedHandleResize);
     };
-  });
 
-  console.log(galleryElementArr, 'galleryArr');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
