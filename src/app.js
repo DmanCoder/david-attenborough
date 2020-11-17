@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { gsap, CSSRulePlugin } from './gsapInit';
 
+// Assets
 import logo from './assets/logo/square.png';
 import dolphinsIMG from './assets/imgs/doliphins.jpg';
 import africaIMG from './assets/imgs/africa.jpg';
@@ -9,9 +10,14 @@ import eagleIMG from './assets/imgs/eagle.jpg';
 import madagascarIMG from './assets/imgs/madagascar.jpg';
 import polarIMG from './assets/imgs/polar.jpg';
 
+// Utils
+import convertPXToVW from './utils/convertPXToVW';
+
+// Styles
 import './styles/main.scss';
 
-const imgObj = {
+// All Image URL
+const imgURL = {
   dolphins: dolphinsIMG,
   africa: africaIMG,
   desert: desertIMG,
@@ -21,7 +27,10 @@ const imgObj = {
 };
 
 const loadingAnimation = (posterExpansionAnimation) => {
+  // Loading timeline
   const loadingTL = gsap.timeline();
+
+  // Loading animation
   loadingTL
     .to('.loading', {
       duration: 1,
@@ -35,19 +44,22 @@ const loadingAnimation = (posterExpansionAnimation) => {
     })
     .set('.loading', {
       clearProps: 'all',
-      onComplete: () => posterExpansionAnimation(),
+      onComplete: () => posterExpansionAnimation(), // Trigger `posterExpansionAnimation` `onComplete`
     });
 };
 
-const createAndPositionInitialGalleryItem = () => {
+const setUpAndPositionPoster = () => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
+
+  // Get rule
+  const posterAfter = CSSRulePlugin.getRule('.poster::after');
 
   // Get the first index of the array
   const glFirst = glItem[0];
 
   // Get x/y coordinates and width/height
-  const glFirstAttr = glFirst.getBoundingClientRect();
+  const glFirstRect = glFirst.getBoundingClientRect();
 
   //  Get data attribute
   const subject = glFirst.dataset.subject;
@@ -55,32 +67,77 @@ const createAndPositionInitialGalleryItem = () => {
   // Create background string
   const rgba = 'rgba(0, 0, 0, 0.3)';
   const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
-  const bgURL = `url('${imgObj[subject]}') no-repeat center / cover`;
+  const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
+
+  // Convert pixel to vw unit
+  // alert({ height: glFirstRect.height, width: glFirstRect.width }.toString());
+  // alert(convertPXToVW(glFirstRect.width));
 
   // Position poster over above `glFirst`
   gsap.set('.poster', {
     css: {
       background: bgURL,
-      top: glFirstAttr.top,
-      left: glFirstAttr.left,
+      top: glFirstRect.top,
+      left: glFirstRect.left,
+      width: glFirstRect.width,
+      height: glFirstRect.height,
+      borderRadius: '2rem',
+      boxShadow: '1.5rem 2rem 1rem rgba(0, 0, 0, 0.25)',
+      zIndex: '10',
+      // boxShadow: '15px 20px 10px rgba(0, 0, 0, 0.25)',
     },
   });
+
+  // Set background of `::after` to transparent
+  gsap.set(posterAfter, {
+    cssRule: { background: 'transparent' },
+  });
+
+  /* This section makes the `.poster` look like its the first item of the gallery */
+  // Add `.shadow-none` to first item in the gallery array
+  glFirst.classList.add('shadow-none');
+
+  // Hide background
+  gsap.set(glFirst, { css: { background: 'transparent' } });
 };
 
 const posterExpansionAnimation = () => {
-  const posterTL = gsap.timeline();
-  const posterAfter = CSSRulePlugin.getRule('.poster::after'); // get the rule
+  // Collect image gallery to array
+  const glItem = gsap.utils.toArray('.banner__gallery-item');
 
+  // Get the first index of the array
+  const glFirst = glItem[0];
+
+  //  Get data attribute
+  const subject = glFirst.dataset.subject;
+
+  // Poster timeline
+  const posterTL = gsap.timeline();
+
+  // Get rule
+  const posterAfter = CSSRulePlugin.getRule('.poster::after');
+
+  // Create background string
+  const rgba = 'rgba(0, 0, 0, 0.3)';
+  const bgLinear = `linear-gradient(${rgba}, ${rgba})`;
+  const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
+  const bg = `${bgLinear}, ${bgURL}`;
+
+  /*
+   * 1). Expand Poster
+   * 2). Darken `posterAfter`
+   * 3). Set current poster to body background image
+   * 4). Change z-index of poster and remove
+   */
   posterTL
     .to('.poster', {
-      duration: 1.25,
+      duration: 1.2,
       ease: 'power4.inOut',
       css: {
         width: '100vw',
         height: '100vh',
         top: 0,
         left: 0,
-
         borderRadius: '0',
       },
     })
@@ -88,9 +145,14 @@ const posterExpansionAnimation = () => {
       delay: -0.8,
       duration: 0.5,
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
+    })
+    .to('body', { css: { background: bg } }, 'bg-switch')
+    // .set('.poster', { clearProps: 'all' });
+    .set('.poster', {
+      clearProps: 'all',
+      onComplete: () => setUpAndPositionPoster(),
     });
-
-  // TODO: Add `.shadow-none` to gallery index 1 image
+  // .to(glFirst, { css: { zIndex: -1 } }, 'bg-switch');
   // TODO: Set Index 1 gallery image to body background
   // TODO: Change z-index to -1 then remove/clear props
 
@@ -101,7 +163,7 @@ const posterExpansionAnimation = () => {
   // const subject = glFirst.dataset.subject;
   // const bgLinear =
   //   'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))';
-  // const bgURL = `url('${imgObj[subject]}') no-repeat center / cover`;
+  // const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
   // const background = `${bgLinear}, ${bgURL}`;
   // clearPosterTL
   //   .set('.poster', { delay: 0.4, clearProps: 'all' })
@@ -124,7 +186,7 @@ function debounce(fn, ms) {
 }
 
 const App = () => {
-  console.log(imgObj);
+  console.log(imgURL);
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -135,19 +197,19 @@ const App = () => {
 
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
+      // Creates gallery poster based on the first item of the gallery
+      setUpAndPositionPoster();
+
       // Execute `posterExpansionAnimation` onComplete
       loadingAnimation(posterExpansionAnimation);
-
-      // Creates gallery poster based on the first item of the gallery
-      createAndPositionInitialGalleryItem();
     } else {
       // Clear all animations on mobile
-      gsap.set(['.loading', '.poster'], { clearProps: 'all' });
+      gsap.set(['body', '.loading', '.poster'], { clearProps: 'all' });
     }
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      createAndPositionInitialGalleryItem();
+      setUpAndPositionPoster();
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
