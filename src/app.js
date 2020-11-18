@@ -148,9 +148,10 @@ const posterExpansionAnimation = (state) => {
   /*
    * 1). Expand Poster
    * 2). Fade out poster text
-   * 2). Darken `posterAfter`
-   * 3). Set current poster to body background image
-   * 4). Change z-index of poster and remove
+   * 3). Darken `posterAfter`
+   * 4). Set current poster to body background image
+   * 5). Gallery Slide animation
+   * 6). Clear props
    */
   posterTL
     .to('.poster', {
@@ -258,19 +259,19 @@ const galleryElementArr = [
     </div>
   </div>,
 
-  // <div
-  //   key="madagascar"
-  //   className="banner__gallery-item madagascar"
-  //   data-subject="madagascar"
-  // >
-  //   <div className="banner__gallery-detail">
-  //     <span className="line"></span>
-  //     <p className="sub-title">The fate of Aepyornis</p>
-  //     <h4 className="title">
-  //       <span>Evolution</span> <span>at its finest</span>
-  //     </h4>
-  //   </div>
-  // </div>,
+  <div
+    key="madagascar"
+    className="banner__gallery-item madagascar"
+    data-subject="madagascar"
+  >
+    <div className="banner__gallery-detail">
+      <span className="line"></span>
+      <p className="sub-title">The fate of Aepyornis</p>
+      <h4 className="title">
+        <span>Evolution</span> <span>at its finest</span>
+      </h4>
+    </div>
+  </div>,
 
   <div
     key="desert"
