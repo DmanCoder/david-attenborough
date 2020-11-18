@@ -189,6 +189,11 @@ const posterExpansionAnimation = (state) => {
         ease: 'power4.inOut',
         x: -(glFirstRect.width + 30),
         stagger: 0.05,
+        onComplete: () => {
+          // TODO: Move first gallery index to the last index + width so it creates the illusion its re-ordered
+          // gsap.to(glFirst, { x: glLastRect.x + glLastRect.width });
+          // gsap.set(glFirst, { x: glLastRect.x + glLastRect.width });
+        },
       },
       0
     )
