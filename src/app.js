@@ -43,7 +43,10 @@ const moveFirstGalleryImageToEndOfGallery = (state) => {
    * All the animation functions, causing an endless loop that works well with the animations
    * - As planed - :D
    */
-  state.fnc(el);
+  // state.fnc(el);
+
+  // gsap.set('.poster', { color: 'red' });
+  console.log(firstPoster);
 };
 
 const loadingAnimation = (state, posterExpansionAnimation) => {
@@ -53,7 +56,7 @@ const loadingAnimation = (state, posterExpansionAnimation) => {
   // Loading animation
   loadingTL
     .to('.loading', {
-      duration: 8,
+      duration: 2.5,
       css: {
         left: '0',
       },
@@ -122,7 +125,10 @@ const posterExpansionAnimation = (state) => {
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
   // Get the first index of the array
-  const glFirst = glItem[0];
+  const glFirst = glItem.shift();
+
+  // Get x/y coordinates and width/height
+  const glFirstRect = glFirst.getBoundingClientRect();
 
   //  Get data attribute
   const subject = glFirst.dataset.subject;
@@ -174,6 +180,17 @@ const posterExpansionAnimation = (state) => {
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     })
     .to('body', { css: { background: bg } }, 'bg-switch')
+    .to(
+      glItem,
+      {
+        delay: 0.1,
+        duration: 1.2,
+        ease: 'power4.inOut',
+        x: -(glFirstRect.width + 30),
+        stagger: 0.05,
+      },
+      0
+    )
     .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
       onComplete: () => {
@@ -241,19 +258,19 @@ const galleryElementArr = [
     </div>
   </div>,
 
-  <div
-    key="madagascar"
-    className="banner__gallery-item madagascar"
-    data-subject="madagascar"
-  >
-    <div className="banner__gallery-detail">
-      <span className="line"></span>
-      <p className="sub-title">The fate of Aepyornis</p>
-      <h4 className="title">
-        <span>Evolution</span> <span>at its finest</span>
-      </h4>
-    </div>
-  </div>,
+  // <div
+  //   key="madagascar"
+  //   className="banner__gallery-item madagascar"
+  //   data-subject="madagascar"
+  // >
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">The fate of Aepyornis</p>
+  //     <h4 className="title">
+  //       <span>Evolution</span> <span>at its finest</span>
+  //     </h4>
+  //   </div>
+  // </div>,
 
   <div
     key="desert"
