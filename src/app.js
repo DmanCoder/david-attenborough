@@ -127,8 +127,12 @@ const posterExpansionAnimation = (state) => {
   // Get the first index of the array
   const glFirst = glItem.shift();
 
+  // Get the last index of the array
+  const glLast = glItem[glItem.length - 1];
+
   // Get x/y coordinates and width/height
   const glFirstRect = glFirst.getBoundingClientRect();
+  const glLastRect = glLast.getBoundingClientRect();
 
   //  Get data attribute
   const subject = glFirst.dataset.subject;
@@ -191,8 +195,24 @@ const posterExpansionAnimation = (state) => {
         stagger: 0.05,
         onComplete: () => {
           // TODO: Move first gallery index to the last index + width so it creates the illusion its re-ordered
-          // gsap.to(glFirst, { x: glLastRect.x + glLastRect.width });
-          // gsap.set(glFirst, { x: glLastRect.x + glLastRect.width });
+          const glItem = gsap.utils.toArray('.banner__gallery-item');
+
+          const glLength = glItem.length - 1;
+
+          // Get the first index of the array
+          const glFirst = glItem[0];
+
+          // Get the last index of the array
+          const glLast = glItem[glLength];
+
+          // Get x/y coordinates and width/height
+          const glLastRect = glLast.getBoundingClientRect();
+
+          const marginLeftSpacing = 30;
+          const spacing = glLength * marginLeftSpacing;
+          const posX = glLastRect.width * glLength;
+
+          gsap.set(glFirst, { x: posX + spacing });
         },
       },
       0
@@ -245,38 +265,38 @@ const galleryElementArr = [
       </h4>
     </div>
   </div>,
-  <div key="polar" className="banner__gallery-item polar" data-subject="polar">
-    <div className="banner__gallery-detail">
-      <span className="line"></span>
-      <p className="sub-title">Animals of the Arctic</p>
-      <h4 className="title">
-        <span>Frozen</span> <span>Planet</span>
-      </h4>
-    </div>
-  </div>,
-  <div key="eagle" className="banner__gallery-item eagle" data-subject="eagle">
-    <div className="banner__gallery-detail">
-      <span className="line"></span>
-      <p className="sub-title">Fishing for a living</p>
-      <h4 className="title">
-        <span>The</span> <span>Life of birds</span>
-      </h4>
-    </div>
-  </div>,
+  // <div key="polar" className="banner__gallery-item polar" data-subject="polar">
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">Animals of the Arctic</p>
+  //     <h4 className="title">
+  //       <span>Frozen</span> <span>Planet</span>
+  //     </h4>
+  //   </div>
+  // </div>,
+  // <div key="eagle" className="banner__gallery-item eagle" data-subject="eagle">
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">Fishing for a living</p>
+  //     <h4 className="title">
+  //       <span>The</span> <span>Life of birds</span>
+  //     </h4>
+  //   </div>
+  // </div>,
 
-  <div
-    key="madagascar"
-    className="banner__gallery-item madagascar"
-    data-subject="madagascar"
-  >
-    <div className="banner__gallery-detail">
-      <span className="line"></span>
-      <p className="sub-title">The fate of Aepyornis</p>
-      <h4 className="title">
-        <span>Evolution</span> <span>at its finest</span>
-      </h4>
-    </div>
-  </div>,
+  // <div
+  //   key="madagascar"
+  //   className="banner__gallery-item madagascar"
+  //   data-subject="madagascar"
+  // >
+  //   <div className="banner__gallery-detail">
+  //     <span className="line"></span>
+  //     <p className="sub-title">The fate of Aepyornis</p>
+  //     <h4 className="title">
+  //       <span>Evolution</span> <span>at its finest</span>
+  //     </h4>
+  //   </div>
+  // </div>,
 
   <div
     key="desert"
