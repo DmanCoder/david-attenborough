@@ -128,6 +128,7 @@
   }
 
   &__gallery {
+    @include immaFlex($align: center);
     .dolphins {
       background: url('../../assets/imgs/doliphins.jpg') no-repeat center /
         cover;
@@ -151,7 +152,6 @@
   }
 
   &__gallery-item {
-    display: inline-block;
     height: 19.5vw;
     width: 13.5vw;
     position: relative;
@@ -159,7 +159,6 @@
     border-radius: 2rem;
     z-index: 20;
     overflow: hidden;
-
     &:not(:first-child) {
       margin-left: 3rem;
     }
