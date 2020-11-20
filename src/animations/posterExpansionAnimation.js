@@ -48,7 +48,7 @@ const posterExpansionAnimation = (state) => {
     if (index === 0) {
       gsap.to(item, { x: 0 });
     } else if (index === 1) {
-      gsap.to(item, { x: glFirstRect.width + gutters });
+      gsap.to(item, { x: glFirstRect.width + gutter });
     }
   });
   posterTL
