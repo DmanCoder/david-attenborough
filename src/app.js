@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { gsap, CSSRulePlugin } from './gsapInit';
 
+// Animations
+import loadingAnimation from './animations/loadingAnimation';
+
 // Assets
 import logo from './assets/logo/square.png';
 import dolphinsIMG from './assets/imgs/doliphins.jpg';
@@ -49,27 +52,26 @@ const moveFirstGalleryImageToEndOfGallery = (state) => {
   console.log(firstPoster);
 };
 
-const loadingAnimation = (state, posterExpansionAnimation) => {
-  // Loading timeline
-  const loadingTL = gsap.timeline();
+// const glItem = gsap.utils.toArray('.banner__gallery-item');
+// const posterOther = gsap.utils.toArray('.poster-other');
 
-  // Loading animation
-  loadingTL
-    .to('.loading', {
-      duration: 2.5,
-      css: {
-        left: '0',
-      },
-    })
-    .to('.loading', {
-      duration: 0.5,
-      css: { left: '100%' },
-    })
-    .set('.loading', {
-      clearProps: 'all',
-      onComplete: () => posterExpansionAnimation(state), // Trigger `posterExpansionAnimation` `onComplete`
-    });
-};
+// glItem.forEach((gallery, index) => {
+//   const galleryReact = gallery.getBoundingClientRect();
+//   // if (index < 1) return;
+//   // const pos = index - 1;
+//   const pos = index;
+//   const posterElement = posterOther[pos];
+//   const subject = gallery.dataset.subject;
+//   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
+
+//   gsap.set(posterElement, {
+//     top: galleryReact.top,
+//     left: galleryReact.left,
+//     width: galleryReact.width,
+//     height: galleryReact.height,
+//     background: bgURL,
+//   });
+// });
 
 const setUpAndPositionPoster = (state) => {
   // Collect image gallery to array
@@ -81,7 +83,7 @@ const setUpAndPositionPoster = (state) => {
   // Get the first index of the array
   const glFirst = glItem[0];
   const glLast = glItem[glItem.length - 1];
-// 
+  //
   // Get x/y coordinates and width/height
   const glFirstRect = glFirst.getBoundingClientRect();
 
