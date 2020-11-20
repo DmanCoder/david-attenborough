@@ -7,7 +7,7 @@ import setUpAndPositionPoster from './animations/setUpAndPositionPoster';
 import posterExpansionAnimation from './animations/posterExpansionAnimation';
 
 // Logo
-import logo from './assets/logo/square.png'
+import logo from './assets/logo/square.png';
 
 // Styles
 import './styles/main.scss';
@@ -213,7 +213,7 @@ const App = () => {
               </div>
             </div>
 
-            <div
+            {/* <div
               key="eagle"
               className="banner__gallery-item eagle"
               data-subject="eagle"
@@ -253,7 +253,7 @@ const App = () => {
                   <span>The Great </span> <span>Ubari Sand Sea</span>
                 </h4>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="banner__gallery-btn">
@@ -268,11 +268,6 @@ const App = () => {
 
             <div className="progress-number">
               <span>01</span>
-              {/* <span>02</span>
-              <span>03</span>
-              <span>04</span>
-              <span>05</span>
-              <span>06</span> */}
             </div>
           </div>
         </div>
