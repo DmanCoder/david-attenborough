@@ -44,11 +44,22 @@ const posterExpansionAnimation = (state) => {
    */
 
   const gutter = 30;
+  const startTime = 0.1;
   glItem.forEach((item, index) => {
     if (index === 0) {
-      gsap.to(item, { x: 0 });
+        gsap.to(item, {
+          ease: 'power4.inOut',
+          delay: startTime,
+          duration: 1.2,
+          x: 0,
+        });
     } else if (index === 1) {
-      gsap.to(item, { x: glFirstRect.width + gutter });
+      gsap.to(item, {
+        ease: 'power4.inOut',
+        delay: startTime + 0.05,
+        duration: 1.2,
+        x: glFirstRect.width + gutter,
+      });
     }
   });
   posterTL

@@ -132,26 +132,26 @@
     height: 19.5vw;
     @include immaFlex($align: center);
     width: 100%;
-    // .dolphins {
-    //   background: url('../../assets/imgs/doliphins.jpg') no-repeat center /
-    //     cover;
-    // }
-    // .africa {
-    //   background: url('../../assets/imgs/africa.jpg') no-repeat center / cover;
-    // }
-    // .polar {
-    //   background: url('../../assets/imgs/polar.jpg') no-repeat center / cover;
-    // }
-    // .eagle {
-    //   background: url('../../assets/imgs/eagle.jpg') no-repeat center / cover;
-    // }
-    // .madagascar {
-    //   background: url('../../assets/imgs/madagascar.jpg') no-repeat center /
-    //     cover;
-    // }
-    // .desert {
-    //   background: url('../../assets/imgs/desert.jpg') no-repeat center / cover;
-    // }
+    .dolphins {
+      background: url('../../assets/imgs/doliphins.jpg') no-repeat center /
+        cover;
+    }
+    .africa {
+      background: url('../../assets/imgs/africa.jpg') no-repeat center / cover;
+    }
+    .polar {
+      background: url('../../assets/imgs/polar.jpg') no-repeat center / cover;
+    }
+    .eagle {
+      background: url('../../assets/imgs/eagle.jpg') no-repeat center / cover;
+    }
+    .madagascar {
+      background: url('../../assets/imgs/madagascar.jpg') no-repeat center /
+        cover;
+    }
+    .desert {
+      background: url('../../assets/imgs/desert.jpg') no-repeat center / cover;
+    }
   }
 
   &__gallery-item {

@@ -28,7 +28,6 @@ const setUpAndPositionPoster = (state) => {
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
   const bgURLLast = `url('${imgURL[subjectLast]}') no-repeat center / cover`;
 
-
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;
     if (index === 0) {
@@ -70,7 +69,7 @@ const setUpAndPositionPoster = (state) => {
   /* This section makes the `.poster` look like its the first item of the gallery */
   // Add `.shadow-none` to first item in the gallery array
   // glFirst.classList.add('shadow-none');
-
+console.log(bgURLLast)
   // Hide background
   gsap.set(glFirst, { css: { background: 'transparent' } });
   // gsap.set(glLast, { css: { background: bgURLLast } });
