@@ -48,7 +48,7 @@ const setUpAndPositionPoster = (state) => {
   //
   /* This section makes the `.poster` look like its the first item of the gallery */
   // Add `.shadow-none` to first item in the gallery array
-  glFirst.classList.add('shadow-none');
+  // glFirst.classList.add('shadow-none');
 
   // Hide background
   gsap.set(glFirst, { css: { background: 'transparent' } });

@@ -94,6 +94,18 @@ const posterExpansionAnimation = (state) => {
           const marginLeftSpacing = 30;
           const spacing = glLength * marginLeftSpacing;
           const posX = glLastRect.width * glLength;
+          
+          glFirst.parentNode.removeChild(glFirst);
+          glLast.parentNode.appendChild(glFirst);
+
+          // const el = [...state.elementST]; // E.g: From [8, 1, 2, 3, 4, 5, 6, 7]
+
+          // console.log(el, 'BEFORE');
+          // const firstPoster = el.shift();
+          // el.push(firstPoster); // E.g: To [1, 2, 3, 4, 5, 6, 7, 8]
+          // console.log(el, 'AFTER');
+
+          // state.fnc(el);
 
           // gsap.set(glFirst, { x: posX + spacing });
         },
@@ -104,10 +116,9 @@ const posterExpansionAnimation = (state) => {
       clearProps: 'all',
       onComplete: () => {
         // setUpAndPositionPoster();
-        moveFirstGalleryImageToEndOfGallery(state);
+        // moveFirstGalleryImageToEndOfGallery(state);
       },
     });
 };
 
-
-export default posterExpansionAnimation
+export default posterExpansionAnimation;
