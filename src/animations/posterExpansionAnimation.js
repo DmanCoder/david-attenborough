@@ -7,6 +7,8 @@ const posterExpansionAnimation = (state) => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
+  console.log(glItem, 'sdfasdfadf');
+
   // Get the first index of the array
   const glFirst = glItem.shift();
 
@@ -40,6 +42,15 @@ const posterExpansionAnimation = (state) => {
    * 5). Gallery Slide animation
    * 6). Clear props
    */
+
+  const gutter = 30;
+  glItem.forEach((item, index) => {
+    if (index === 0) {
+      gsap.to(item, { x: 0 });
+    } else if (index === 1) {
+      gsap.to(item, { x: glFirstRect.width + gutters });
+    }
+  });
   posterTL
     .to('.poster', {
       duration: 1.2,
@@ -72,7 +83,8 @@ const posterExpansionAnimation = (state) => {
       glItem,
       {
         delay: 0.1,
-        duration: 1.2,
+        // duration: 1.2,
+        duration: 3,
         ease: 'power4.inOut',
         // x: -(glFirstRect.width + 30),
         stagger: 0.05,
@@ -94,7 +106,7 @@ const posterExpansionAnimation = (state) => {
           const marginLeftSpacing = 30;
           const spacing = glLength * marginLeftSpacing;
           const posX = glLastRect.width * glLength;
-          
+
           glFirst.parentNode.removeChild(glFirst);
           glLast.parentNode.appendChild(glFirst);
 
@@ -107,7 +119,7 @@ const posterExpansionAnimation = (state) => {
 
           // state.fnc(el);
 
-          // gsap.set(glFirst, { x: posX + spacing });
+          gsap.set(glFirst, { x: posX + spacing });
         },
       },
       0

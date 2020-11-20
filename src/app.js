@@ -127,6 +127,8 @@ const galleryElementArr = [
   // </div>,
 ];
 
+window.isLoaded = false;
+
 const App = () => {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
@@ -135,18 +137,23 @@ const App = () => {
 
   const [galleryArr, setGalleryArr] = useState(galleryElementArr);
 
-  useEffect(() => {
-    // setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
-  }, [galleryArr]);
+  // useEffect(() => {
+  //   if (window.isLoaded) {
+  //     const glItem = gsap.utils.toArray('.banner__gallery-item');
+  //     console.log(glItem, '=TESTING');
+  //   }
+  //   // setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
+  // }, [galleryArr]);
 
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
 
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
+      window.isLoaded = true;
+
       // Creates gallery poster based on the first item of the gallery
       setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
-
       /*
        * This function is called every 8 seconds
        * Execute `posterExpansionAnimation` onComplete
