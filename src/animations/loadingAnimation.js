@@ -2,12 +2,13 @@ import { gsap } from '../gsapInit';
 
 const loadingAnimation = (state, posterExpansionAnimation) => {
   // Loading timeline
-  const loadingTL = gsap.timeline();
+  const loadingTL = gsap.timeline({ repeat: 2 });
 
   // Loading animation
   loadingTL
     .to('.loading', {
-      duration: 2.5,
+      delay: 3,
+      duration: 5,
       css: {
         left: '0',
       },
@@ -18,7 +19,9 @@ const loadingAnimation = (state, posterExpansionAnimation) => {
     })
     .set('.loading', {
       clearProps: 'all',
-      onComplete: () => posterExpansionAnimation(state), // Trigger `posterExpansionAnimation` `onComplete`
+      onComplete: () => {
+        posterExpansionAnimation(state); // Trigger `posterExpansionAnimation` `onComplete`
+      },
     });
 };
 
