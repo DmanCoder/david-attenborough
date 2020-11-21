@@ -72,7 +72,7 @@ const setUpAndPositionPoster = (state) => {
 console.log(bgURLLast)
   // Hide background
   gsap.set(glFirst, { css: { background: 'transparent' } });
-  // gsap.set(glLast, { css: { background: bgURLLast } });
+  gsap.set(glLast, { css: { background: bgURLLast } });
 };
 
 export default setUpAndPositionPoster;

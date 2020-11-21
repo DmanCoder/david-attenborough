@@ -2,6 +2,7 @@ import { gsap, CSSRulePlugin } from '../gsapInit';
 
 import imgURL from './helpers/imgURL';
 import moveFirstGalleryImageToEndOfGallery from './helpers/moveFirstGalleryImageToEndOfGallery';
+import setUpAndPositionPoster from './setUpAndPositionPoster';
 
 const posterExpansionAnimation = (state) => {
   // Collect image gallery to array
@@ -47,12 +48,12 @@ const posterExpansionAnimation = (state) => {
   const startTime = 0.1;
   glItem.forEach((item, index) => {
     if (index === 0) {
-        gsap.to(item, {
-          ease: 'power4.inOut',
-          delay: startTime,
-          duration: 1.2,
-          x: 0,
-        });
+      gsap.to(item, {
+        ease: 'power4.inOut',
+        delay: startTime,
+        duration: 1.2,
+        x: 0,
+      });
     } else if (index === 1) {
       gsap.to(item, {
         ease: 'power4.inOut',
@@ -121,15 +122,6 @@ const posterExpansionAnimation = (state) => {
           glFirst.parentNode.removeChild(glFirst);
           glLast.parentNode.appendChild(glFirst);
 
-          // const el = [...state.elementST]; // E.g: From [8, 1, 2, 3, 4, 5, 6, 7]
-
-          // console.log(el, 'BEFORE');
-          // const firstPoster = el.shift();
-          // el.push(firstPoster); // E.g: To [1, 2, 3, 4, 5, 6, 7, 8]
-          // console.log(el, 'AFTER');
-
-          // state.fnc(el);
-
           gsap.set(glFirst, { x: posX + spacing });
         },
       },
@@ -138,7 +130,7 @@ const posterExpansionAnimation = (state) => {
     .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
       onComplete: () => {
-        // setUpAndPositionPoster();
+        setUpAndPositionPoster();
         // moveFirstGalleryImageToEndOfGallery(state);
       },
     });
