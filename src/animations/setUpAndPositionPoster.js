@@ -5,7 +5,6 @@ import imgURL from './helpers/imgURL';
 const setUpAndPositionPoster = (state) => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
-  const galleryContainer = gsap.utils.toArray('.banner__gallery')[0];
 
   // Get rule
   const posterAfter = CSSRulePlugin.getRule('.poster::after');
@@ -16,7 +15,6 @@ const setUpAndPositionPoster = (state) => {
   //
   // Get x/y coordinates and width/height
   const glFirstRect = glFirst.getBoundingClientRect();
-  const galleryContainerRect = galleryContainer.getBoundingClientRect();
 
   //  Get data attribute
   const subject = glFirst.dataset.subject;
@@ -30,13 +28,17 @@ const setUpAndPositionPoster = (state) => {
 
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;
-    if (index === 0) return;
+
+    gsap.set(gallery, {
+      borderRadius: '20px',
+    });
+
     if (index === 1) {
-      gsap.to(gallery, {
+      gsap.set(gallery, {
         x: glFirstRect.width + gutter,
       });
     } else {
-      gsap.to(gallery, {
+      gsap.set(gallery, {
         x: glFirstRect.width * index + gutter,
       });
     }
@@ -45,16 +47,14 @@ const setUpAndPositionPoster = (state) => {
   // Position poster over above `glFirst`
   gsap.set('.poster', {
     css: {
+      position: 'fixed',
       background: bgURL,
-      top: galleryContainerRect.top,
+      top: glFirstRect.top + 1.08,
       left: glFirstRect.left,
-      width: glFirstRect.width,
-      height: glFirstRect.height,
-      position: 'fixed'
-      // borderRadius: '2rem',
-      // zIndex: '10',
     },
   });
+
+  console.log(glFirstRect);
 
   // Set background of `::after` to transparent
   gsap.set(posterAfter, {
@@ -66,7 +66,11 @@ const setUpAndPositionPoster = (state) => {
   glFirst.classList.add('shadow-none');
 
   // Hide background
-  gsap.to(glFirst, { background: 'transparent' });
+  gsap.set(glFirst, {
+    css: {
+      background: 'transparent',
+    },
+  });
   gsap.set(glLast, { css: { background: bgURLLast } });
 };
 

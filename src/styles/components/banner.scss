@@ -133,8 +133,7 @@
     @include immaFlex($align: center);
     width: 100%;
     .dolphins {
-      background: url('../../assets/imgs/doliphins.jpg') no-repeat center /
-        cover;
+      background: url('../../assets/imgs/doliphins.jpg');
     }
     .africa {
       background: url('../../assets/imgs/africa.jpg') no-repeat center / cover;
@@ -162,8 +161,7 @@
     border-radius: 2rem;
     z-index: 20;
     overflow: hidden;
-
-    // @include immaFlex($align: flex-end);
+    display: inline-block;
   }
 
   &__gallery-detail {
@@ -201,7 +199,7 @@
       position: absolute;
       color: $white;
       bottom: -6vw;
-      width: 90%;
+      width: 80%;
       z-index: 20;
 
       @include immaFlex($align: center);
@@ -248,10 +246,11 @@
 .poster {
   display: none;
   @include mediaQ('>=desktop') {
-    position: fixed;
-    display: inline-block;
+    position: absolute;
+    display: block;
     height: 19.5vw;
     width: 13.5vw;
+    top: 23vw;
     box-shadow: 1.5rem 2rem 1rem rgba(0, 0, 0, 0.25);
     border-radius: 2rem;
     background-color: #333;
