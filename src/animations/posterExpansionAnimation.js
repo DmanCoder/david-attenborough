@@ -8,8 +8,6 @@ const posterExpansionAnimation = (state) => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
-  console.log(glItem, 'sdfasdfadf');
-
   // Get the first index of the array
   const glFirst = glItem.shift();
 
@@ -37,7 +35,6 @@ const posterExpansionAnimation = (state) => {
 
   const gutter = 30;
   const startTime = 0.1;
-  const stagger = 0.1;
 
   // Slide Gallery animation
   glItem.forEach((item, index) => {
@@ -77,7 +74,7 @@ const posterExpansionAnimation = (state) => {
    * 2). Fade out poster text
    * 3). Darken `posterAfter`
    * 4). Set current poster to body background image
-   * 5). Clear props
+   * 5). Clear props && Re-order positioning
    */
   posterTL
     .to('.poster', {
@@ -107,47 +104,11 @@ const posterExpansionAnimation = (state) => {
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     })
     .to('body', { css: { background: bg } }, 'bg-switch')
-    .to(
-      glItem,
-      {
-        delay: 0.1,
-        // duration: 1.2,
-        duration: 3,
-        ease: 'power4.inOut',
-        // x: -(glFirstRect.width + 30),
-        stagger: 0.05,
-        onComplete: () => {
-          // TODO: Move first gallery index to the last index + width so it creates the illusion its re-ordered
-          const glItem = gsap.utils.toArray('.banner__gallery-item');
-
-          const glLength = glItem.length - 1;
-
-          // Get the first index of the array
-          const glFirst = glItem[0];
-
-          // Get the last index of the array
-          const glLast = glItem[glLength];
-
-          // Get x/y coordinates and width/height
-          const glLastRect = glLast.getBoundingClientRect();
-
-          const marginLeftSpacing = 30;
-          const spacing = glLength * marginLeftSpacing;
-          const posX = glLastRect.width * glLength;
-
-          glFirst.parentNode.removeChild(glFirst);
-          glLast.parentNode.appendChild(glFirst);
-
-          gsap.set(glFirst, { x: posX + spacing });
-        },
-      },
-      0
-    )
     .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
       onComplete: () => {
+        moveFirstGalleryImageToEndOfGallery();
         setUpAndPositionPoster();
-        // moveFirstGalleryImageToEndOfGallery(state);
       },
     });
 };

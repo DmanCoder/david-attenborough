@@ -107,14 +107,6 @@ const App = () => {
 
   const [galleryArr, setGalleryArr] = useState(galleryElementArr);
 
-  // useEffect(() => {
-  //   if (window.isLoaded) {
-  //     const glItem = gsap.utils.toArray('.banner__gallery-item');
-  //     console.log(glItem, '=TESTING');
-  //   }
-  //   // setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
-  // }, [galleryArr]);
-
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
 

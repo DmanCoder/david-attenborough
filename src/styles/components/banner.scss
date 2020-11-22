@@ -129,7 +129,6 @@
   }
 
   &__gallery {
-    // height: 19.5vw;
     height: 19.5vw;
     @include immaFlex($align: center);
     width: 100%;
@@ -164,7 +163,7 @@
     z-index: 20;
     overflow: hidden;
 
-    @include immaFlex($align: flex-end);
+    // @include immaFlex($align: flex-end);
   }
 
   &__gallery-detail {
@@ -249,10 +248,9 @@
 .poster {
   display: none;
   @include mediaQ('>=desktop') {
-    position: absolute;
-    display: block;
+    position: fixed;
+    display: inline-block;
     height: 19.5vw;
-    top: 0;
     width: 13.5vw;
     box-shadow: 1.5rem 2rem 1rem rgba(0, 0, 0, 0.25);
     border-radius: 2rem;

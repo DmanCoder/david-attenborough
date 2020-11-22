@@ -46,12 +46,13 @@ const setUpAndPositionPoster = (state) => {
   gsap.set('.poster', {
     css: {
       background: bgURL,
-      top: glFirstRect.top + 1,
+      top: galleryContainerRect.top,
       left: glFirstRect.left,
       width: glFirstRect.width,
       height: glFirstRect.height,
-      borderRadius: '2rem',
-      zIndex: '10',
+      position: 'fixed'
+      // borderRadius: '2rem',
+      // zIndex: '10',
     },
   });
 
