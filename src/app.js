@@ -134,7 +134,7 @@ const App = () => {
 
           <div className="banner__discover">
             <span className="material-icons">bookmark</span>
-            <button>Discover location</button>
+            <button>Discover More </button>
           </div>
         </div>
 
