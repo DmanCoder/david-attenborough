@@ -35,34 +35,48 @@ const posterExpansionAnimation = (state) => {
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
   const bg = `${bgLinear}, ${bgURL}`;
 
+  const gutter = 30;
+  const startTime = 0.1;
+  const stagger = 0.1;
+
+  // Slide Gallery animation
+  glItem.forEach((item, index) => {
+    const posX = glFirstRect.width * index + gutter * index;
+    switch (index) {
+      case 0:
+        gsap.to(item, {
+          ease: 'power4.inOut',
+          delay: startTime,
+          duration: 1.2,
+          x: 0,
+        });
+        break;
+      case 1:
+        gsap.to(item, {
+          ease: 'power4.inOut',
+          delay: startTime + 0.05,
+          duration: 1.2,
+          x: glFirstRect.width + gutter,
+        });
+        break;
+      default:
+        gsap.to(item, {
+          ease: 'power4.inOut',
+          delay: startTime + 0.05,
+          duration: 1.2,
+          x: posX,
+        });
+        break;
+    }
+  });
+
   /*
    * 1). Expand Poster
    * 2). Fade out poster text
    * 3). Darken `posterAfter`
    * 4). Set current poster to body background image
-   * 5). Gallery Slide animation
-   * 6). Clear props
+   * 5). Clear props
    */
-
-  const gutter = 30;
-  const startTime = 0.1;
-  glItem.forEach((item, index) => {
-    if (index === 0) {
-      gsap.to(item, {
-        ease: 'power4.inOut',
-        delay: startTime,
-        duration: 1.2,
-        x: 0,
-      });
-    } else if (index === 1) {
-      gsap.to(item, {
-        ease: 'power4.inOut',
-        delay: startTime + 0.05,
-        duration: 1.2,
-        x: glFirstRect.width + gutter,
-      });
-    }
-  });
   posterTL
     .to('.poster', {
       duration: 1.2,

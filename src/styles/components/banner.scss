@@ -162,15 +162,14 @@
     border-radius: 2rem;
     z-index: 20;
     overflow: hidden;
-    // &:not(:first-child) {
-    //   margin-left: 3rem;
-    // }
+
+    @include immaFlex($align: flex-end);
   }
 
   &__gallery-detail {
     position: absolute;
-    bottom: 3vw;
-    padding: 1vw;
+    bottom: 3.8vw;
+    left: 1vw;
     .line {
       height: 0.2vh;
       width: 0.8vw;

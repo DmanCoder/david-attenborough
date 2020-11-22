@@ -12,36 +12,6 @@ import logo from './assets/logo/square.png';
 // Styles
 import './styles/main.scss';
 
-// TODO: Create a looping function for `loadingAnimation`
-// TODO: Gallery Slide animation
-// TODO: Baller text reveal and reveal out animation
-
-// const interval = setInterval(function () {
-//   console.log('RUNNING ever 8 sec');
-// }, 8000);
-// clearInterval(interval);
-
-// const glItem = gsap.utils.toArray('.banner__gallery-item');
-// const posterOther = gsap.utils.toArray('.poster-other');
-
-// glItem.forEach((gallery, index) => {
-//   const galleryReact = gallery.getBoundingClientRect();
-//   // if (index < 1) return;
-//   // const pos = index - 1;
-//   const pos = index;
-//   const posterElement = posterOther[pos];
-//   const subject = gallery.dataset.subject;
-//   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
-
-//   gsap.set(posterElement, {
-//     top: galleryReact.top,
-//     left: galleryReact.left,
-//     width: galleryReact.width,
-//     height: galleryReact.height,
-//     background: bgURL,
-//   });
-// });
-
 // Time out debounce
 function debounce(fn, ms) {
   let timer;
@@ -249,7 +219,89 @@ const App = () => {
 
         <div className="banner__slides">
           <div className="banner__gallery">
-            {galleryArr.map((item) => item)}
+            <div
+              key="dolphins"
+              className="banner__gallery-item dolphins"
+              data-subject="dolphins"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Creatures of the deep</p>
+                <h4 className="title">
+                  <span>Blue</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
+              key="africa"
+              className="banner__gallery-item africa"
+              data-subject="africa"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Africa</p>
+                <h4 className="title">
+                  <span>The</span> <span>Motherland</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
+              key="polar"
+              className="banner__gallery-item polar"
+              data-subject="polar"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Animals of the Arctic</p>
+                <h4 className="title">
+                  <span>Frozen</span> <span>Planet</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
+              key="eagle"
+              className="banner__gallery-item eagle"
+              data-subject="eagle"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Fishing for a living</p>
+                <h4 className="title">
+                  <span>The</span> <span>Life of birds</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
+              key="madagascar"
+              className="banner__gallery-item madagascar"
+              data-subject="madagascar"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">The fate of Aepyornis</p>
+                <h4 className="title">
+                  <span>Evolution</span> <span>at its finest</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
+              key="desert"
+              className="banner__gallery-item desert"
+              data-subject="desert"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">Sahara Desert</p>
+                <h4 className="title">
+                  <span>The Great </span> <span>Ubari Sand Sea</span>
+                </h4>
+              </div>
+            </div>
           </div>
 
           <div className="banner__gallery-btn">

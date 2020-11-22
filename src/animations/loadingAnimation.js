@@ -2,7 +2,7 @@ import { gsap } from '../gsapInit';
 
 const loadingAnimation = (state, posterExpansionAnimation) => {
   // Loading timeline
-  const loadingTL = gsap.timeline({ repeat: 3 });
+  const loadingTL = gsap.timeline({ repeat: -1 });
 
   // Loading animation
   loadingTL
