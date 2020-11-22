@@ -57,6 +57,7 @@ const posterExpansionAnimation = (state) => {
           delay: startTime + 0.05,
           duration: 1.2,
           x: glFirstRect.width + gutter,
+          top: 0,
         });
         break;
       default:
@@ -65,6 +66,7 @@ const posterExpansionAnimation = (state) => {
           delay: startTime + 0.05,
           duration: 1.2,
           x: posX,
+          top: 0,
         });
         break;
     }

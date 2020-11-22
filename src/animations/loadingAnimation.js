@@ -8,7 +8,7 @@ const loadingAnimation = (state, posterExpansionAnimation) => {
   loadingTL
     .to('.loading', {
       delay: 3,
-      duration: 1,
+      duration: 1.5,
       css: {
         left: '0',
       },

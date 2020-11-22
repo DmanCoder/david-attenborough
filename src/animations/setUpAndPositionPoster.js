@@ -30,7 +30,6 @@ const setUpAndPositionPoster = (state) => {
 
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;
-
     if (index === 0) return;
     if (index === 1) {
       gsap.to(gallery, {
@@ -47,14 +46,12 @@ const setUpAndPositionPoster = (state) => {
   gsap.set('.poster', {
     css: {
       background: bgURL,
-      top: galleryContainerRect.top,
-      left: galleryContainerRect.left,
+      top: glFirstRect.top + 1,
+      left: glFirstRect.left,
       width: glFirstRect.width,
-      height: galleryContainerRect.height,
+      height: glFirstRect.height,
       borderRadius: '2rem',
-      // boxShadow: '1.5rem 2rem 1rem rgba(0, 0, 0, 0.25)',
       zIndex: '10',
-      // boxShadow: '15px 20px 10px rgba(0, 0, 0, 0.25)',
     },
   });
 
@@ -62,13 +59,13 @@ const setUpAndPositionPoster = (state) => {
   gsap.set(posterAfter, {
     cssRule: { background: 'transparent' }, // Remove container mask
   });
-  //
+
   /* This section makes the `.poster` look like its the first item of the gallery */
   // Add `.shadow-none` to first item in the gallery array
-  // glFirst.classList.add('shadow-none');
-  console.log(bgURLLast);
+  glFirst.classList.add('shadow-none');
+
   // Hide background
-  gsap.set(glFirst, { css: { background: 'transparent' } });
+  gsap.to(glFirst, { background: 'transparent' });
   gsap.set(glLast, { css: { background: bgURLLast } });
 };
 
