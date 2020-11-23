@@ -28,12 +28,11 @@ const setUpAndPositionPoster = (state) => {
 
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;
-
-    gsap.set(gallery, {
-      borderRadius: '20px',
-    });
-
-    if (index === 1) {
+    if (index === 0) {
+      gsap.set(gallery, {
+        x: 0,
+      });
+    } else if (index === 1) {
       gsap.set(gallery, {
         x: glFirstRect.width + gutter,
       });
@@ -53,8 +52,6 @@ const setUpAndPositionPoster = (state) => {
       left: glFirstRect.left,
     },
   });
-
-  console.log(glFirstRect);
 
   // Set background of `::after` to transparent
   gsap.set(posterAfter, {
