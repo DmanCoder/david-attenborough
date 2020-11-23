@@ -8,7 +8,6 @@ import setUpAndPositionPoster from './setUpAndPositionPoster';
 import bannerTextAnimation from './bannerTextAnimation';
 
 const posterExpansionAnimation = (state) => {
-  console.log(state, '-----------------');
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -75,6 +74,7 @@ const posterExpansionAnimation = (state) => {
 
   numberSlideAnimation();
   progressBarAnimation(state);
+  // const
 
   /*
    * 1). Expand Poster
@@ -94,10 +94,31 @@ const posterExpansionAnimation = (state) => {
         left: 0,
         borderRadius: '0',
         onStart: () => {
-          bannerTextAnimation();
+          const bannerTextTL = gsap.timeline();
+          bannerTextTL
+            .to('.banner__text', {
+              duration: 1.2,
+              ease: 'power4.inOut',
+              css: { scale: 1.2, left: '-3vw', bottom: '-5vw' },
+            })
+            .set('.banner__text', { clearProps: 'all' });
+
+          setTimeout(() => {
+            bannerTextAnimation();
+          }, 700);
         },
       },
     })
+
+    .to(
+      '.dark-layer',
+      {
+        duration: 1.2,
+        ease: 'power4.inOut',
+        css: { backgroundColor: 'rgba(0,0,0,1)' },
+      },
+      0
+    )
     .to(
       `.${subject} .banner__gallery-detail`,
       {
@@ -111,6 +132,7 @@ const posterExpansionAnimation = (state) => {
     .to(posterAfter, {
       delay: -0.85,
       duration: 1,
+      borderRadius: '0',
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     })
     .to('body', { css: { background: bg } }, 'bg-switch')

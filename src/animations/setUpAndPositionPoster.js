@@ -1,5 +1,4 @@
 import { gsap, CSSRulePlugin } from '../gsapInit';
-import bannerTextAnimation from './bannerTextAnimation';
 
 import imgURL from './helpers/imgURL';
 
@@ -69,7 +68,14 @@ const setUpAndPositionPoster = (state) => {
       background: 'transparent',
     },
   });
+
+  // Add background
   gsap.set(glLast, { css: { background: bgURLLast } });
+
+  // Rest layer
+  gsap.set('.dark-layer', {
+    css: { backgroundColor: 'rgba(0,0,0,0)' },
+  });
 };
 
 export default setUpAndPositionPoster;

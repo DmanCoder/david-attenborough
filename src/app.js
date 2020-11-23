@@ -90,6 +90,7 @@ const App = () => {
   return (
     <div>
       <div className="poster"></div>
+      <div className="dark-layer"></div>
       <div className="loading"></div>
       <div className="navigation">
         <ul>
