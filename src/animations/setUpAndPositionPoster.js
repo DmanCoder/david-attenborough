@@ -1,4 +1,5 @@
 import { gsap, CSSRulePlugin } from '../gsapInit';
+import bannerTextAnimation from './bannerTextAnimation';
 
 import imgURL from './helpers/imgURL';
 

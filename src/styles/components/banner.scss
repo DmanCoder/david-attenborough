@@ -20,9 +20,14 @@
 
     @include mediaQ('>=desktop') {
       width: 40%;
-      margin-bottom: 15vh;
-      z-index: 20;
+      z-index: 10;
     }
+  }
+
+  &__content {
+    bottom: 15vh;
+    position: absolute;
+    // opacity: 0;
   }
 
   &__line {
@@ -42,6 +47,7 @@
     @include mediaQ('>=desktop') {
       font-size: 1.4vw;
       line-height: 2vw;
+      text-transform: capitalize;
     }
   }
 
@@ -179,6 +185,7 @@
     p {
       font-size: 0.75vw;
       margin-bottom: 0.15vw;
+      text-transform: capitalize;
     }
 
     h4 {

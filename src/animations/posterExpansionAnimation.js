@@ -5,6 +5,7 @@ import moveFirstGalleryImageToEndOfGallery from './helpers/moveFirstGalleryImage
 import numberSlideAnimation from './numberSlideAnimation';
 import progressBarAnimation from './progressBarAnimation';
 import setUpAndPositionPoster from './setUpAndPositionPoster';
+import bannerTextAnimation from './bannerTextAnimation';
 
 const posterExpansionAnimation = (state) => {
   console.log(state, '-----------------');
@@ -92,6 +93,9 @@ const posterExpansionAnimation = (state) => {
         top: 0,
         left: 0,
         borderRadius: '0',
+        onStart: () => {
+          bannerTextAnimation();
+        },
       },
     })
     .to(

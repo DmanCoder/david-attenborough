@@ -11,6 +11,7 @@ import logo from './assets/logo/square.png';
 
 // Styles
 import './styles/main.scss';
+import bannerTextAnimation from './animations/bannerTextAnimation';
 
 // Time out debounce
 function debounce(fn, ms) {
@@ -23,8 +24,6 @@ function debounce(fn, ms) {
     }, ms);
   };
 }
-
-const galleryElementArr = [];
 
 window.isLoaded = false;
 
@@ -46,11 +45,14 @@ const App = () => {
 
       // Creates gallery poster based on the first item of the gallery
       setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
+
+      // Setup banner text content
+      bannerTextAnimation();
+
       /*
        * This function is called every 8 seconds
        * Execute `posterExpansionAnimation` onComplete
        */
-
       loadingAnimation(
         { galleryIndex, fnc: setGalleryIndex },
         posterExpansionAnimation
@@ -76,6 +78,14 @@ const App = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const setupContentText = () => {
+    const bannerContent = gsap.utils.toArray('.banner__content');
+    console.log(bannerContent, '=========bannerContent');
+    bannerContent.forEach((textContent) => {
+      gsap.set(textContent, { autoAlpha: 0 });
+    });
+  };
 
   return (
     <div>
@@ -120,22 +130,125 @@ const App = () => {
       </div>
 
       <div className="banner">
-        <div className="banner__text sahara">
-          <span className="banner__line"></span>
-          <p className="banner__sub-title">Sahara Desert</p>
-          <h1 className="banner__title">
-            <span>The Great </span> <span>Ubari Sand Sea</span>
-          </h1>
+        <div className="banner__text ">
+          {/* Sahara */}
+          <div className="banner__content sahara">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">Sahara Desert</p>
+            <h1 className="banner__title">
+              <span>The Great </span> <span>Ubari Sand Sea</span>
+            </h1>
 
-          <p className="banner__description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
-            sunt praesentium deleniti qui autem quaerat aut incidunt aspernatur
-            mollitia at consequuntur.
-          </p>
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
 
-          <div className="banner__discover">
-            <span className="material-icons">bookmark</span>
-            <button>Discover More </button>
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
+          {/* Dolphins */}
+          <div className="banner__content dolphins">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">Creatures of the deep</p>
+            <h1 className="banner__title">
+              <span>The Blue</span> <span>Planet III</span>
+            </h1>
+
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
+          {/* Africa */}
+          <div className="banner__content africa">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">The Hunt</p>
+            <h1 className="banner__title">
+              <span>Planet Earth</span> <span>Predator vs Prey</span>
+            </h1>
+
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
+          {/* Polar */}
+          <div className="banner__content polar">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">Animals of the Arctic</p>
+            <h1 className="banner__title">
+              <span>Frozen</span> <span>Worlds III</span>
+            </h1>
+
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
+          {/* Eagle */}
+          <div className="banner__content eagle">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">Fishing for a living</p>
+            <h1 className="banner__title">
+              <span>Birds</span> <span>Of Paradise</span>
+            </h1>
+
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
+          {/* Madagascar */}
+          <div className="banner__content madagascar">
+            <span className="banner__line"></span>
+            <p className="banner__sub-title">The Fate Of Aepyornis</p>
+            <h1 className="banner__title">
+              <span>Evolution</span> <span>At it's Finest</span>
+            </h1>
+
+            <p className="banner__description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
           </div>
         </div>
 
@@ -150,7 +263,7 @@ const App = () => {
                 <span className="line"></span>
                 <p className="sub-title">Creatures of the deep</p>
                 <h4 className="title">
-                  <span>Blue</span> <span>Planet</span>
+                  <span>THe Blue</span> <span>Planet III</span>
                 </h4>
               </div>
             </div>
@@ -162,9 +275,9 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">Africa</p>
+                <p className="sub-title">The Hunt</p>
                 <h4 className="title">
-                  <span>The</span> <span>Motherland</span>
+                  <span>Planet Earth</span> <span>Predator vs Prey</span>
                 </h4>
               </div>
             </div>
@@ -178,7 +291,7 @@ const App = () => {
                 <span className="line"></span>
                 <p className="sub-title">Animals of the Arctic</p>
                 <h4 className="title">
-                  <span>Frozen</span> <span>Planet</span>
+                  <span>Frozen</span> <span>Worlds III</span>
                 </h4>
               </div>
             </div>
@@ -192,7 +305,7 @@ const App = () => {
                 <span className="line"></span>
                 <p className="sub-title">Fishing for a living</p>
                 <h4 className="title">
-                  <span>The</span> <span>Life of birds</span>
+                  <span>Birds</span> <span> Of Paradise</span>
                 </h4>
               </div>
             </div>
