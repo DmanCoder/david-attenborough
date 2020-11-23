@@ -131,7 +131,7 @@ const App = () => {
       </div>
 
       <div className="banner">
-        <div className="banner__text ">
+        <div className="banner__text">
           {/* Sahara */}
           <div className="banner__content sahara">
             <span className="banner__line"></span>

@@ -97,9 +97,10 @@ const posterExpansionAnimation = (state) => {
           const bannerTextTL = gsap.timeline();
           bannerTextTL
             .to('.banner__text', {
-              duration: 1.2,
-              ease: 'power4.inOut',
-              css: { scale: 1.2, left: '-3vw', bottom: '-5vw' },
+              delay: 0.3,
+              duration: .65,
+              ease: 'power2.inOut',
+              css: { scale: 1.2, left: '-6vw', bottom: '-3vw' },
             })
             .set('.banner__text', { clearProps: 'all' });
 
