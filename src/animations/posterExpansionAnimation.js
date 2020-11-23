@@ -2,6 +2,7 @@ import { gsap, CSSRulePlugin } from '../gsapInit';
 
 import imgURL from './helpers/imgURL';
 import moveFirstGalleryImageToEndOfGallery from './helpers/moveFirstGalleryImageToEndOfGallery';
+import numberSlideAnimation from './numberSlideAnimation';
 import progressBarAnimation from './progressBarAnimation';
 import setUpAndPositionPoster from './setUpAndPositionPoster';
 
@@ -71,6 +72,7 @@ const posterExpansionAnimation = (state) => {
     }
   });
 
+  numberSlideAnimation();
   progressBarAnimation(state);
 
   /*

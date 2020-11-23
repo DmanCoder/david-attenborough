@@ -42,7 +42,7 @@ const App = () => {
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
       window.isLoaded = true;
-      window.galleryIndex = 0
+      window.galleryIndex = 0;
 
       // Creates gallery poster based on the first item of the gallery
       setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
@@ -237,6 +237,12 @@ const App = () => {
             </div>
 
             <div className="progress-number">
+              <span>01</span>
+              <span>02</span>
+              <span>03</span>
+              <span>04</span>
+              <span>05</span>
+              <span>06</span>
               <span>01</span>
             </div>
           </div>

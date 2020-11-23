@@ -241,6 +241,18 @@
 
     .progress-number {
       font-size: 3vw;
+      // height: 3vw;
+      width: 2.5vw;
+      // background-color: red;
+      overflow: hidden;
+
+      span {
+        position: relative;
+      }
+
+      span:not(:first-child) {
+        margin-left: 4vw;
+      }
       @extend %font-bebas;
     }
   }
