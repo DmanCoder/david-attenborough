@@ -2,9 +2,11 @@ import { gsap, CSSRulePlugin } from '../gsapInit';
 
 import imgURL from './helpers/imgURL';
 import moveFirstGalleryImageToEndOfGallery from './helpers/moveFirstGalleryImageToEndOfGallery';
+import progressBarAnimation from './progressBarAnimation';
 import setUpAndPositionPoster from './setUpAndPositionPoster';
 
 const posterExpansionAnimation = (state) => {
+  console.log(state, '-----------------');
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -68,6 +70,8 @@ const posterExpansionAnimation = (state) => {
         break;
     }
   });
+
+  progressBarAnimation(state);
 
   /*
    * 1). Expand Poster

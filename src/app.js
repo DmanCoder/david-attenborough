@@ -34,7 +34,7 @@ const App = () => {
     width: window.innerWidth,
   });
 
-  const [galleryArr, setGalleryArr] = useState(galleryElementArr);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   useEffect(() => {
     gsap.to('body', { css: { visibility: 'visible' } });
@@ -42,16 +42,17 @@ const App = () => {
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
       window.isLoaded = true;
+      window.galleryIndex = 0
 
       // Creates gallery poster based on the first item of the gallery
-      setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
+      setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
       /*
        * This function is called every 8 seconds
        * Execute `posterExpansionAnimation` onComplete
        */
 
       loadingAnimation(
-        { elementST: galleryArr, fnc: setGalleryArr },
+        { galleryIndex, fnc: setGalleryIndex },
         posterExpansionAnimation
       );
     } else {
@@ -61,7 +62,7 @@ const App = () => {
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setUpAndPositionPoster({ elementST: galleryArr, fnc: setGalleryArr });
+      setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,

@@ -228,7 +228,10 @@
         height: 0.2vw;
         margin: 0 2vw;
         background-color: rgba($white, 0.5);
-        div:first-child {
+        position: relative;
+        overflow: hidden;
+        div {
+          position: absolute;
           width: 0%;
           background-color: $color__primary;
           height: 0.2vw;
