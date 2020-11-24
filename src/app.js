@@ -133,20 +133,20 @@ const App = () => {
       <div className="banner">
         <div className="banner__text">
           {/* Sahara */}
-          <div className="banner__content sahara">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">Sahara Desert</p>
-            <h1 className="banner__title">
+          <div className="banner__content desert">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">Sahara Desert</p>
+            <h1 className="banner__title text">
               <span>The Great </span> <span>Ubari Sand Sea</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>
@@ -154,19 +154,19 @@ const App = () => {
 
           {/* Dolphins */}
           <div className="banner__content dolphins">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">Creatures of the deep</p>
-            <h1 className="banner__title">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">Creatures of the deep</p>
+            <h1 className="banner__title text">
               <span>The Blue</span> <span>Planet III</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>
@@ -174,19 +174,19 @@ const App = () => {
 
           {/* Africa */}
           <div className="banner__content africa">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">The Hunt</p>
-            <h1 className="banner__title">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">The Hunt</p>
+            <h1 className="banner__title text">
               <span>Planet Earth</span> <span>Predator vs Prey</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>
@@ -194,19 +194,19 @@ const App = () => {
 
           {/* Polar */}
           <div className="banner__content polar">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">Animals of the Arctic</p>
-            <h1 className="banner__title">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">Animals of the Arctic</p>
+            <h1 className="banner__title text">
               <span>Frozen</span> <span>Worlds III</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>
@@ -214,19 +214,19 @@ const App = () => {
 
           {/* Eagle */}
           <div className="banner__content eagle">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">Fishing for a living</p>
-            <h1 className="banner__title">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">Fishing for a living</p>
+            <h1 className="banner__title text">
               <span>Birds</span> <span>Of Paradise</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>
@@ -234,19 +234,19 @@ const App = () => {
 
           {/* Madagascar */}
           <div className="banner__content madagascar">
-            <span className="banner__line"></span>
-            <p className="banner__sub-title">The Fate Of Aepyornis</p>
-            <h1 className="banner__title">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">The Fate Of Aepyornis</p>
+            <h1 className="banner__title text">
               <span>Evolution</span> <span>At it's Finest</span>
             </h1>
 
-            <p className="banner__description">
+            <p className="banner__description text">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
               sunt praesentium deleniti qui autem quaerat aut incidunt
               aspernatur mollitia at consequuntur.
             </p>
 
-            <div className="banner__discover">
+            <div className="banner__discover text">
               <span className="material-icons">bookmark</span>
               <button>Discover More </button>
             </div>

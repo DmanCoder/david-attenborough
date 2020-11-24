@@ -96,9 +96,10 @@ const posterExpansionAnimation = (state) => {
         onStart: () => {
           const bannerTextTL = gsap.timeline();
           bannerTextTL
+            .set('.banner__text', { css: { zIndex: 10 } })
             .to('.banner__text', {
               delay: 0.3,
-              duration: .65,
+              duration: 0.7,
               ease: 'power2.inOut',
               css: { scale: 1.2, left: '-6vw', bottom: '-3vw' },
             })
@@ -106,7 +107,27 @@ const posterExpansionAnimation = (state) => {
 
           setTimeout(() => {
             bannerTextAnimation();
-          }, 700);
+          }, 750);
+        },
+        onComplete: () => {
+          const btTl = gsap.timeline();
+          btTl
+            .set('.banner__text', {
+              delay: 1,
+              css: { zIndex: 50 },
+            })
+            .fromTo(
+              [`.${subject} .text`],
+              { y: 40, autoAlpha: 0 },
+              {
+                delay: 0.8,
+                duration: 0.3,
+                y: 0,
+                stagger: 0.1,
+                autoAlpha: 1,
+              },
+              0
+            );
         },
       },
     })
