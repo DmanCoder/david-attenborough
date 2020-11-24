@@ -28,7 +28,7 @@ body {
   background-color: #333;
   background: linear-gradient(rgba(#000, 0.3), rgba(#000, 0.3)),
     url('../../assets/imgs/desert.jpg') no-repeat center / cover;
-  visibility: hidden;
+  // visibility: hidden;
   @extend %font-open;
 }
 

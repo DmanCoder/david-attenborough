@@ -57,6 +57,7 @@
     font-size: 6rem;
     text-transform: uppercase;
     line-height: 8rem;
+    position: relative;
 
     @include mediaQ('>=desktop') {
       font-size: 6vw;
@@ -64,13 +65,35 @@
       margin-top: 1vw;
       margin-bottom: 1vw;
       letter-spacing: 0.2rem;
-    }
+      p {
+        overflow: hidden;
+        height: 6vw;
+        width: 100%;
+      }
 
-    span {
-      @include mediaQ('>=desktop') {
-        display: block;
+      span {
+        width: 100%;
+        position: relative;
+        // top: 3vw;
       }
     }
+
+    // span {
+    //   @include mediaQ('>=desktop') {
+    //     display: block;
+    //   }
+    // }
+
+    // span::after {
+    //   content: '';
+    //   display: inline-block;
+    //   overflow: hidden;
+    //   background-color: transparent;
+    //   width: 100%;
+    //   height: 6vw;
+    //   left: 0;
+    //   position: absolute;
+    // }
   }
 
   &__description {

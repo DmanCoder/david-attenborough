@@ -74,7 +74,6 @@ const posterExpansionAnimation = (state) => {
 
   numberSlideAnimation();
   progressBarAnimation(state);
-  // const
 
   /*
    * 1). Expand Poster
@@ -118,15 +117,21 @@ const posterExpansionAnimation = (state) => {
             })
             .fromTo(
               [`.${subject} .text`],
-              { y: 40, autoAlpha: 0 },
+              { y: 60, autoAlpha: 0 },
               {
-                delay: 0.8,
-                duration: 0.3,
+                ease: 'power2.inOut',
+                delay: 0.5,
+                duration: 0.6,
                 y: 0,
                 stagger: 0.1,
                 autoAlpha: 1,
               },
               0
+            )
+            .fromTo(
+              `.${subject} .banner__title span`,
+              { top: '6vw' },
+              { delay: -0.65, duration: 0.6, ease: 'power2.inOut', top: '0vw' }
             );
         },
       },

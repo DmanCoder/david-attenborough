@@ -79,14 +79,6 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const setupContentText = () => {
-    const bannerContent = gsap.utils.toArray('.banner__content');
-    console.log(bannerContent, '=========bannerContent');
-    bannerContent.forEach((textContent) => {
-      gsap.set(textContent, { autoAlpha: 0 });
-    });
-  };
-
   return (
     <div>
       <div className="poster"></div>
@@ -137,7 +129,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">Sahara Desert</p>
             <h1 className="banner__title text">
-              <span>The Great </span> <span>Ubari Sand Sea</span>
+              <p>
+                <span>The Great </span>
+              </p>
+              <p>
+                <span>Ubari Sand Sea</span>
+              </p>
             </h1>
 
             <p className="banner__description text">
@@ -157,7 +154,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">Creatures of the deep</p>
             <h1 className="banner__title text">
-              <span>The Blue</span> <span>Planet III</span>
+              <p>
+                <span>The Blue</span>
+              </p>
+              <p>
+                <span>Planet III</span>
+              </p>
             </h1>
 
             <p className="banner__description text text">
@@ -177,7 +179,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">The Hunt</p>
             <h1 className="banner__title text">
-              <span>Planet Earth</span> <span>Predator vs Prey</span>
+              <p>
+                <span>Planet Earth</span>
+              </p>
+              <p>
+                <span>Predator vs Prey</span>
+              </p>
             </h1>
 
             <p className="banner__description text">
@@ -197,7 +204,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">Animals of the Arctic</p>
             <h1 className="banner__title text">
-              <span>Frozen</span> <span>Worlds III</span>
+              <p>
+                <span>Frozen</span>
+              </p>
+              <p>
+                <span>Worlds III</span>
+              </p>
             </h1>
 
             <p className="banner__description text">
@@ -217,7 +229,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">Fishing for a living</p>
             <h1 className="banner__title text">
-              <span>Birds</span> <span>Of Paradise</span>
+              <p>
+                <span>Birds</span>
+              </p>
+              <p>
+                <span>Of Paradise</span>
+              </p>
             </h1>
 
             <p className="banner__description text">
@@ -237,7 +254,12 @@ const App = () => {
             <span className="banner__line text"></span>
             <p className="banner__sub-title text">The Fate Of Aepyornis</p>
             <h1 className="banner__title text">
-              <span>Evolution</span> <span>At it's Finest</span>
+              <p>
+                <span>Evolution</span>
+              </p>
+              <p>
+                <span>At it's Finest</span>
+              </p>
             </h1>
 
             <p className="banner__description text">
