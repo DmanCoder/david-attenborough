@@ -341,9 +341,12 @@
 }
 
 .background {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
+  top: 0;
+  right: 0;
+  transform: scale(1.6);
   background: linear-gradient(rgba(#000, 0.3), rgba(#000, 0.3)),
     url('../../assets/imgs/desert.jpg') no-repeat center / cover;
 }

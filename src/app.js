@@ -41,21 +41,15 @@ const App = () => {
     introRevealTL
       .to('.intro-reveal', {
         duration: 1.4,
-        delay: 1,
         ease: 'power4.inOut',
         css: { width: 0 },
       })
-      .fromTo(
-        '.background',
-        {
-          delay: 0.5,
-          duration: 1.2,
-          ease: 'power4.inOut',
-          css: { scale: 1.3 },
-        },
-        { css: { scale: 1 } },
-        0
-      );
+      .to('.background', {
+        delay: -1.4,
+        duration: 1.6,
+        ease: 'power4.inOut',
+        css: { transform: 'scale(1)' },
+      });
   };
 
   useEffect(() => {
