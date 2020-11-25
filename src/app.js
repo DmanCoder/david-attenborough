@@ -44,11 +44,13 @@ const App = () => {
       // Intro Animation
       introRevealAnimation();
 
-      // Creates gallery poster based on the first item of the gallery
-      setUpAndPositionPoster();
+      setTimeout(() => {
+        // Creates gallery poster based on the first item of the gallery
+        setUpAndPositionPoster();
 
-      // Setup banner text content
-      bannerTextAnimation();
+        // Setup banner text content
+        bannerTextAnimation();
+      }, 500);
     } else {
       // Clear all animations on mobile
       resetAnimation();
