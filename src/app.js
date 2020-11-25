@@ -26,6 +26,7 @@ function debounce(fn, ms) {
 }
 
 window.isLoaded = false;
+window.init = false;
 
 const App = () => {
   const [dimensions, setDimensions] = useState({
@@ -73,7 +74,7 @@ const App = () => {
       .fromTo(
         `.banner__gallery`,
         { x: '50vw' },
-        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', x: '0vw' },
+        { delay: 1.5, duration: 1.2, ease: 'power4.inOut', x: '0vw' },
         0
       )
       .fromTo(
@@ -85,7 +86,17 @@ const App = () => {
       .fromTo(
         `.navigation ul`,
         { y: '-12vw' },
-        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', y: '0vw' },
+        {
+          delay: 1.4,
+          duration: 1.2,
+          ease: 'power4.inOut',
+          y: '0vw',
+          onComplete: () => {
+            window.init = true;
+            setUpAndPositionPoster();
+            loadingAnimation()
+          },
+        },
         0
       );
   };
@@ -107,10 +118,10 @@ const App = () => {
        * This function is called every 8 seconds
        * Execute `posterExpansionAnimation` onComplete
        */
-      loadingAnimation(
-        { galleryIndex, fnc: setGalleryIndex },
-        posterExpansionAnimation
-      );
+      // loadingAnimation(
+      //   { galleryIndex, fnc: setGalleryIndex },
+      //   posterExpansionAnimation
+      // );
     } else {
       // Clear all animations on mobile
       gsap.set(['.background', '.loading', '.poster'], { clearProps: 'all' });
