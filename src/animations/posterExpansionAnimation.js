@@ -7,7 +7,7 @@ import progressBarAnimation from './progressBarAnimation';
 import setUpAndPositionPoster from './setUpAndPositionPoster';
 import bannerTextAnimation from './bannerTextAnimation';
 
-const posterExpansionAnimation = (state) => {
+const posterExpansionAnimation = () => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -73,7 +73,7 @@ const posterExpansionAnimation = (state) => {
   });
 
   numberSlideAnimation();
-  progressBarAnimation(state);
+  progressBarAnimation();
 
   /*
    * 1). Expand Poster

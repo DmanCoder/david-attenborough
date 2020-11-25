@@ -1,8 +1,6 @@
 import { gsap } from '../gsapInit';
 
-const progressBarAnimation = (state) => {
-  console.log('Progress Bar Animation...', state);
-
+const progressBarAnimation = () => {
   switch (window.galleryIndex) {
     case 0:
       gsap.to('.progress-bar div', {

@@ -1,6 +1,6 @@
 import { gsap } from '../../gsapInit';
 
-const moveFirstGalleryImageToEndOfGallery = (state) => {
+const moveFirstGalleryImageToEndOfGallery = () => {
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
   const glLength = glItem.length - 1;
@@ -19,7 +19,7 @@ const moveFirstGalleryImageToEndOfGallery = (state) => {
   const posX = glLastRect.width * glLength;
 
   glFirst.parentNode.removeChild(glFirst);
-  
+
   glFirst.classList.remove('shadow-none');
 
   glLast.parentNode.appendChild(glFirst);

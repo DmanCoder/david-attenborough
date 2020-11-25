@@ -2,7 +2,7 @@ import { gsap, CSSRulePlugin } from '../gsapInit';
 
 import imgURL from './helpers/imgURL';
 
-const setUpAndPositionPoster = (state) => {
+const setUpAndPositionPoster = () => {
   // Collect image gallery to array
   const glItem = gsap.utils.toArray('.banner__gallery-item');
 
@@ -26,7 +26,7 @@ const setUpAndPositionPoster = (state) => {
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
   const bgURLLast = `url('${imgURL[subjectLast]}') no-repeat center / cover`;
 
-  console.log(bgURL)
+  console.log(bgURL);
 
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;

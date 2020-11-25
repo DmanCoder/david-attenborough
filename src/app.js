@@ -12,6 +12,8 @@ import logo from './assets/logo/square.png';
 // Styles
 import './styles/main.scss';
 import bannerTextAnimation from './animations/bannerTextAnimation';
+import introRevealAnimation from './animations/introAnimation';
+import resetAnimation from './animations/resetAnimation';
 
 // Time out debounce
 function debounce(fn, ms) {
@@ -27,6 +29,8 @@ function debounce(fn, ms) {
 
 window.isLoaded = false;
 window.init = false;
+window.isLoaded = true;
+window.galleryIndex = 0;
 
 const App = () => {
   const [dimensions, setDimensions] = useState({
@@ -34,93 +38,25 @@ const App = () => {
     width: window.innerWidth,
   });
 
-  const [galleryIndex, setGalleryIndex] = useState(0);
-
-  const introRevealAnimation = () => {
-    const introRevealTL = gsap.timeline();
-
-    introRevealTL
-      .to('.intro-reveal', {
-        delay: 1,
-        duration: 1.6,
-        ease: 'power4.inOut',
-        css: { width: 0 },
-      })
-      .to('.background', {
-        delay: -1.4,
-        duration: 1.8,
-        ease: 'power4.inOut',
-        css: { transform: 'scale(1)' },
-      })
-      .fromTo(
-        '.desert .text',
-        { y: 60, autoAlpha: 0 },
-        {
-          delay: 1.5,
-          ease: 'power4.inOut',
-          duration: 0.8,
-          y: 0,
-          stagger: 0.1,
-          autoAlpha: 1,
-        },
-        0
-      )
-      .fromTo(
-        `.desert .banner__title span`,
-        { top: '6vw' },
-        { delay: 1.8, duration: 1, ease: 'power4.inOut', top: '0vw' },
-        0
-      )
-      .fromTo(
-        `.banner__gallery`,
-        { x: '50vw' },
-        { delay: 1.5, duration: 1.2, ease: 'power4.inOut', x: '0vw' },
-        0
-      )
-      .fromTo(
-        `.banner__gallery-btn`,
-        { y: '12vw' },
-        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', y: '0vw' },
-        0
-      )
-      .fromTo(
-        `.navigation ul`,
-        { y: '-12vw' },
-        {
-          delay: 1.4,
-          duration: 1.2,
-          ease: 'power4.inOut',
-          y: '0vw',
-          onComplete: () => {
-            window.init = true;
-            setUpAndPositionPoster();
-            loadingAnimation();
-          },
-        },
-        0
-      );
-  };
-
   useEffect(() => {
-    introRevealAnimation();
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
-      window.isLoaded = true;
-      window.galleryIndex = 0;
+      // Intro Animation
+      introRevealAnimation();
 
       // Creates gallery poster based on the first item of the gallery
-      setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
+      setUpAndPositionPoster();
 
       // Setup banner text content
       bannerTextAnimation();
     } else {
       // Clear all animations on mobile
-      gsap.set(['.background', '.loading', '.poster'], { clearProps: 'all' });
+      resetAnimation();
     }
 
     // Update height and width on window resize
     const debouncedHandleResize = debounce(function handleResize() {
-      setUpAndPositionPoster({ galleryIndex, fnc: setGalleryIndex });
+      setUpAndPositionPoster();
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
