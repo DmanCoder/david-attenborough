@@ -395,7 +395,7 @@ const App = () => {
             >
               <div className="banner__gallery-detail">
                 <span className="line"></span>
-                <p className="sub-title">A life on out planet</p>
+                <p className="sub-title">A life on our planet</p>
                 <h4 className="title">
                   <span>Sir David Witness</span> <span>Statement</span>
                 </h4>
