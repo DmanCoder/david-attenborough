@@ -26,6 +26,8 @@ const setUpAndPositionPoster = (state) => {
   const bgURL = `url('${imgURL[subject]}') no-repeat center / cover`;
   const bgURLLast = `url('${imgURL[subjectLast]}') no-repeat center / cover`;
 
+  console.log(bgURL)
+
   glItem.forEach((gallery, index) => {
     const gutter = 30 * index;
     if (index === 0) {

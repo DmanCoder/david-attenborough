@@ -1,11 +1,7 @@
 import { gsap } from '../gsapInit';
 
 const numberSlideAnimation = () => {
-  // Loading timeline
-  const numberSlideTL = gsap.timeline();
-
   const numberSpan = gsap.utils.toArray('.progress-number span');
-  console.log(window.galleryIndex);
   switch (window.galleryIndex) {
     case 0:
       gsap.to(numberSpan, {
@@ -53,6 +49,14 @@ const numberSlideAnimation = () => {
         duration: 1.2,
         ease: 'power4.inOut',
         css: { left: '-38.7vw' },
+      });
+      break;
+    case 6:
+      gsap.to(numberSpan, {
+        delay: 0.01,
+        duration: 1.2,
+        ease: 'power4.inOut',
+        css: { left: '-45.15vw' },
         onComplete: () => gsap.set(numberSpan, { clearProps: 'all' }),
       });
       break;

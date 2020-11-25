@@ -94,7 +94,7 @@ const App = () => {
           onComplete: () => {
             window.init = true;
             setUpAndPositionPoster();
-            loadingAnimation()
+            loadingAnimation();
           },
         },
         0
@@ -113,15 +113,6 @@ const App = () => {
 
       // Setup banner text content
       bannerTextAnimation();
-
-      /*
-       * This function is called every 8 seconds
-       * Execute `posterExpansionAnimation` onComplete
-       */
-      // loadingAnimation(
-      //   { galleryIndex, fnc: setGalleryIndex },
-      //   posterExpansionAnimation
-      // );
     } else {
       // Clear all animations on mobile
       gsap.set(['.background', '.loading', '.poster'], { clearProps: 'all' });
@@ -266,6 +257,31 @@ const App = () => {
             </div>
           </div>
 
+          {/* David */}
+          <div className="banner__content david">
+            <span className="banner__line text"></span>
+            <p className="banner__sub-title text">A life on our planet</p>
+            <h1 className="banner__title text">
+              <p>
+                <span>Sir David Witness</span>
+              </p>
+              <p>
+                <span>Statement</span>
+              </p>
+            </h1>
+
+            <p className="banner__description text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus,
+              sunt praesentium deleniti qui autem quaerat aut incidunt
+              aspernatur mollitia at consequuntur.
+            </p>
+
+            <div className="banner__discover text">
+              <span className="material-icons">bookmark</span>
+              <button>Discover More </button>
+            </div>
+          </div>
+
           {/* Polar */}
           <div className="banner__content polar">
             <span className="banner__line text"></span>
@@ -373,6 +389,20 @@ const App = () => {
             </div>
 
             <div
+              key="david"
+              className="banner__gallery-item david"
+              data-subject="david"
+            >
+              <div className="banner__gallery-detail">
+                <span className="line"></span>
+                <p className="sub-title">A life on out planet</p>
+                <h4 className="title">
+                  <span>Sir David Witness</span> <span>Statement</span>
+                </h4>
+              </div>
+            </div>
+
+            <div
               key="polar"
               className="banner__gallery-item polar"
               data-subject="polar"
@@ -446,6 +476,7 @@ const App = () => {
               <span>04</span>
               <span>05</span>
               <span>06</span>
+              <span>07</span>
               <span>01</span>
             </div>
           </div>

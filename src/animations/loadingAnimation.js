@@ -9,7 +9,7 @@ const loadingAnimation = () => {
   loadingTL
     .to('.loading', {
       delay: 1,
-      duration: 4.2,
+      duration: 3,
       css: {
         left: '0',
       },
