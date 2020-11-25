@@ -1,5 +1,3 @@
-// Assets
-import logo from '../../assets/logo/square.png';
 import dolphinsIMG from '../../assets/imgs/doliphins.jpg';
 import africaIMG from '../../assets/imgs/africa.jpg';
 import desertIMG from '../../assets/imgs/desert.jpg';
@@ -8,7 +6,7 @@ import madagascarIMG from '../../assets/imgs/madagascar.jpg';
 import polarIMG from '../../assets/imgs/polar.jpg';
 import davidIMG from '../../assets/imgs/david.jpg';
 
-export default {
+const imgs = {
   dolphins: dolphinsIMG,
   africa: africaIMG,
   desert: desertIMG,
@@ -17,3 +15,5 @@ export default {
   polar: polarIMG,
   david: davidIMG,
 };
+
+export default imgs;
