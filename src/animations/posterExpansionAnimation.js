@@ -109,8 +109,8 @@ const posterExpansionAnimation = (state) => {
           }, 750);
         },
         onComplete: () => {
-          const btTl = gsap.timeline();
-          btTl
+          const bannerTextTL = gsap.timeline();
+          bannerTextTL
             .set('.banner__text', {
               delay: 1,
               css: { zIndex: 50 },
@@ -162,7 +162,7 @@ const posterExpansionAnimation = (state) => {
       borderRadius: '0',
       cssRule: { background: 'rgba(0, 0, 0, .3)' },
     })
-    .to('body', { css: { background: bg } }, 'bg-switch')
+    .to('.background', { css: { background: bg } }, 'bg-switch')
     .set(['.poster', `.${subject} .banner__gallery-detail`], {
       clearProps: 'all',
       onComplete: () => {

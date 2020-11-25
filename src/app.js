@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { gsap, CSSRulePlugin } from './gsapInit';
+import { gsap } from './gsapInit';
 
 // Animations
 import loadingAnimation from './animations/loadingAnimation';
@@ -35,9 +35,31 @@ const App = () => {
 
   const [galleryIndex, setGalleryIndex] = useState(0);
 
-  useEffect(() => {
-    gsap.to('body', { css: { visibility: 'visible' } });
+  const introRevealAnimation = () => {
+    const introRevealTL = gsap.timeline();
 
+    introRevealTL
+      .to('.intro-reveal', {
+        duration: 1.4,
+        delay: 1,
+        ease: 'power4.inOut',
+        css: { width: 0 },
+      })
+      .fromTo(
+        '.background',
+        {
+          delay: 0.5,
+          duration: 1.2,
+          ease: 'power4.inOut',
+          css: { scale: 1.3 },
+        },
+        { css: { scale: 1 } },
+        0
+      );
+  };
+
+  useEffect(() => {
+    introRevealAnimation();
     // Animation on desktop only
     if (window.innerWidth >= 1024) {
       window.isLoaded = true;
@@ -59,7 +81,7 @@ const App = () => {
       );
     } else {
       // Clear all animations on mobile
-      gsap.set(['body', '.loading', '.poster'], { clearProps: 'all' });
+      gsap.set(['.background', '.loading', '.poster'], { clearProps: 'all' });
     }
 
     // Update height and width on window resize
@@ -81,6 +103,8 @@ const App = () => {
 
   return (
     <div>
+      <div className="intro-reveal"></div>
+      <div className="background"></div>
       <div className="poster"></div>
       <div className="dark-layer"></div>
       <div className="loading"></div>
