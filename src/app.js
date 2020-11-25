@@ -43,14 +43,8 @@ const App = () => {
     if (window.innerWidth >= 1024) {
       // Intro Animation
       introRevealAnimation();
-
-      setTimeout(() => {
-        // Creates gallery poster based on the first item of the gallery
-        setUpAndPositionPoster();
-
-        // Setup banner text content
-        bannerTextAnimation();
-      }, 500);
+      setUpAndPositionPoster();
+      bannerTextAnimation();
     } else {
       // Clear all animations on mobile
       resetAnimation();
