@@ -69,6 +69,24 @@ const App = () => {
         { top: '6vw' },
         { delay: 1.8, duration: 1, ease: 'power4.inOut', top: '0vw' },
         0
+      )
+      .fromTo(
+        `.banner__gallery`,
+        { x: '50vw' },
+        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', x: '0vw' },
+        0
+      )
+      .fromTo(
+        `.banner__gallery-btn`,
+        { y: '12vw' },
+        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', y: '0vw' },
+        0
+      )
+      .fromTo(
+        `.navigation ul`,
+        { y: '-12vw' },
+        { delay: 1.4, duration: 1.2, ease: 'power4.inOut', y: '0vw' },
+        0
       );
   };
 

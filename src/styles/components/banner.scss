@@ -159,8 +159,10 @@
 
   &__gallery {
     height: 19.5vw;
-    @include immaFlex($align: center);
+    position: relative;
+    z-index: 30;
     width: 100%;
+    @include immaFlex($align: center);
     .dolphins {
       background: url('../../assets/imgs/doliphins.jpg');
     }
