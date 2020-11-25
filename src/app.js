@@ -40,6 +40,7 @@ const App = () => {
 
     introRevealTL
       .to('.intro-reveal', {
+        delay: 1, 
         duration: 1.4,
         ease: 'power4.inOut',
         css: { width: 0 },
